@@ -52,6 +52,19 @@ async def get_institution(
     return res
 
 
+@router.post("/leis", response_model=List[FinancialInstitutionWithDomainsDto])
+@requires("authenticated")
+async def get_institutions_from_lei_list(
+        request: Request,
+        lei_list: List[str],
+        session: AsyncSession = Depends(get_session),
+):
+    res = await repo.get_institutions_from_lei_list(session, lei_list)
+    if not res:
+        raise HTTPException(HTTPStatus.NOT_FOUND, f"Leis in {lei_list} not found.")
+    return res
+
+
 @router.post("/{lei}/domains/", response_model=List[FinancialInsitutionDomainDto])
 @requires(["query-groups", "manage-users"])
 async def add_domains(

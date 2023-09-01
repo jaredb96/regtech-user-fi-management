@@ -42,6 +42,20 @@ async def get_institution(session: AsyncSession, lei: str) -> FinancialInstituti
         return await session.scalar(stmt)
 
 
+async def get_institutions_from_lei_list(
+        session: AsyncSession,
+        lei_list: List[str]
+) -> List[FinancialInstitutionDao]:
+    async with session.begin():
+        stmt = (
+            select(FinancialInstitutionDao)
+            .options(joinedload(FinancialInstitutionDao.domains))
+            .filter(FinancialInstitutionDao.lei.in_(lei_list))
+        )
+        res = await session.scalars(stmt)
+        return res.unique().all()
+
+
 async def upsert_institution(
     session: AsyncSession, fi: FinancialInstitutionDto
 ) -> FinancialInstitutionDao:
