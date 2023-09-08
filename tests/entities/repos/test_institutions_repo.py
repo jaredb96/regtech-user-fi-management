@@ -37,6 +37,14 @@ class TestInstitutionsRepo:
         res = await repo.get_institutions(session, domain="testing.bank")
         assert len(res) == 0
 
+    async def test_get_institutions_by_lei_list(self, session: AsyncSession):
+        res = await repo.get_institutions(session, leis=['TESTBANK123'])
+        assert len(res) == 1
+
+    async def test_get_institutions_by_lei_list_item_not_existing(self, session: AsyncSession):
+        res = await repo.get_institutions(session, leis=["NOTTESTBANK"])
+        assert len(res) == 0
+
     async def test_add_institution(self, session: AsyncSession):
         await repo.upsert_institution(
             session, FinancialInstitutionDao(name="New Bank 123", lei="NEWBANK123")
