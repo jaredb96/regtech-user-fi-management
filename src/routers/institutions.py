@@ -1,7 +1,8 @@
-from fastapi import Depends, Request, HTTPException
+from fastapi import Depends, Request, HTTPException, Query
 from http import HTTPStatus
 from oauth2 import oauth2_admin
 from util import Router
+from util.parsers import parse_leis
 from typing import List, Tuple
 from entities.engine import get_session
 from entities.repos import institutions_repo as repo
@@ -24,9 +25,10 @@ async def get_institutions(
     domain: str = "",
     page: int = 0,
     count: int = 100,
+    leis: List[str] = Depends(parse_leis),
     session: AsyncSession = Depends(get_session),
 ):
-    return await repo.get_institutions(session, domain, page, count)
+    return await repo.get_institutions(session, domain, page, count, leis)
 
 
 @router.post("/", response_model=Tuple[str, FinancialInstitutionDto])
@@ -49,19 +51,6 @@ async def get_institution(
     res = await repo.get_institution(session, lei)
     if not res:
         raise HTTPException(HTTPStatus.NOT_FOUND, f"{lei} not found.")
-    return res
-
-
-@router.post("/leis", response_model=List[FinancialInstitutionWithDomainsDto])
-@requires("authenticated")
-async def get_institutions_from_lei_list(
-        request: Request,
-        lei_list: List[str],
-        session: AsyncSession = Depends(get_session),
-):
-    res = await repo.get_institutions_from_lei_list(session, lei_list)
-    if not res:
-        raise HTTPException(HTTPStatus.NOT_FOUND, f"Leis in {lei_list} not found.")
     return res
 
 

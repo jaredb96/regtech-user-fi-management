@@ -13,7 +13,7 @@ from entities.models import (
 
 
 async def get_institutions(
-    session: AsyncSession, domain: str = "", page: int = 0, count: int = 100
+    session: AsyncSession, domain: str = "", page: int = 0, count: int = 100, leis: List[str] = []
 ) -> List[FinancialInstitutionDao]:
     async with session.begin():
         stmt = (
@@ -22,6 +22,10 @@ async def get_institutions(
             .limit(count)
             .offset(page * count)
         )
+        if leis:
+            stmt = stmt.join(FinancialInstitutionDomainDao,
+                FinancialInstitutionDao.lei == FinancialInstitutionDomainDao.lei,
+            ).filter(FinancialInstitutionDao.lei.in_(leis))
         if d := domain.strip():
             search = "%{}%".format(d)
             stmt = stmt.join(
@@ -40,20 +44,6 @@ async def get_institution(session: AsyncSession, lei: str) -> FinancialInstituti
             .filter(FinancialInstitutionDao.lei == lei)
         )
         return await session.scalar(stmt)
-
-
-async def get_institutions_from_lei_list(
-        session: AsyncSession,
-        lei_list: List[str]
-) -> List[FinancialInstitutionDao]:
-    async with session.begin():
-        stmt = (
-            select(FinancialInstitutionDao)
-            .options(joinedload(FinancialInstitutionDao.domains))
-            .filter(FinancialInstitutionDao.lei.in_(lei_list))
-        )
-        res = await session.scalars(stmt)
-        return res.unique().all()
 
 
 async def upsert_institution(
