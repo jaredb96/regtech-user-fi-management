@@ -28,7 +28,7 @@ async def get_institutions(
     count: int = 100,
     session: AsyncSession = Depends(get_session),
 ):
-    return await repo.get_institutions(session, domain, page, count, leis)
+    return await repo.get_institutions(session, leis, domain, page, count)
 
 
 @router.post("/", response_model=Tuple[str, FinancialInstitutionDto])
