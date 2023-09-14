@@ -47,12 +47,12 @@ class TestInstitutionsRepo:
         res = await repo.get_institutions(query_session, domain="testing.bank")
         assert len(res) == 0
 
-    async def test_get_institutions_by_lei_list(self, session: AsyncSession):
-        res = await repo.get_institutions(session, leis=['TESTBANK123', 'TESTBANK456'])
+    async def test_get_institutions_by_lei_list(self, query_session: AsyncSession):
+        res = await repo.get_institutions(query_session, leis=['TESTBANK123', 'TESTBANK456'])
         assert len(res) == 2
 
-    async def test_get_institutions_by_lei_list_item_not_existing(self, session: AsyncSession):
-        res = await repo.get_institutions(session, leis=["NOTTESTBANK"])
+    async def test_get_institutions_by_lei_list_item_not_existing(self, query_session: AsyncSession):
+        res = await repo.get_institutions(query_session, leis=["NOTTESTBANK"])
         assert len(res) == 0
 
     async def test_add_institution(self, transaction_session: AsyncSession):
