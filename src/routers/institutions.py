@@ -1,4 +1,4 @@
-from fastapi import Depends, Request, HTTPException, Query
+from fastapi import Depends, Request, HTTPException
 from http import HTTPStatus
 from oauth2 import oauth2_admin
 from util import Router

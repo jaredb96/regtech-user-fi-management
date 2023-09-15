@@ -43,7 +43,8 @@ async def email_domain_denied(session: AsyncSession, email: str) -> bool:
 
 def parse_leis(leis: List[str] = Query(None)) -> Optional[List]:
     """
-    Parses leis from list of one or multiple strings to a list of multiple distinct lei strings
+    Parses leis from list of one or multiple strings to a list of
+    multiple distinct lei strings.
     Returns empty list when nothing is passed in
     Ex1: ['lei1,lei2'] -> ['lei1', 'lei2']
     Ex2: ['lei1,lei2', 'lei3,lei4'] -> ['lei1','lei2','lei3','lei4']
