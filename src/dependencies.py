@@ -50,6 +50,6 @@ def parse_leis(leis: List[str] = Query(None)) -> Optional[List]:
     """
 
     if leis:
-        return list(chain.from_iterable([x.split(',') for x in leis]))
+        return list(chain.from_iterable([x.split(",") for x in leis]))
     else:
         return None

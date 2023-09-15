@@ -34,7 +34,9 @@ async def get_institutions(
     page: int = 0,
     count: int = 100,
 ):
-    return await repo.get_institutions(request.state.db_session, leis, domain, page, count)
+    return await repo.get_institutions(
+        request.state.db_session, leis, domain, page, count
+    )
 
 
 @router.post("/", response_model=Tuple[str, FinancialInstitutionDto])

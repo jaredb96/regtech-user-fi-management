@@ -14,7 +14,11 @@ from entities.models import (
 
 
 async def get_institutions(
-    session: AsyncSession, leis: List[str] = None, domain: str = "", page: int = 0, count: int = 100,
+    session: AsyncSession,
+    leis: List[str] = None,
+    domain: str = "",
+    page: int = 0,
+    count: int = 100,
 ) -> List[FinancialInstitutionDao]:
     async with session.begin():
         stmt = (
