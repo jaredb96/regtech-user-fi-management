@@ -48,10 +48,14 @@ class TestInstitutionsRepo:
         assert len(res) == 0
 
     async def test_get_institutions_by_lei_list(self, query_session: AsyncSession):
-        res = await repo.get_institutions(query_session, leis=['TESTBANK123', 'TESTBANK456'])
+        res = await repo.get_institutions(
+            query_session, leis=["TESTBANK123", "TESTBANK456"]
+        )
         assert len(res) == 2
 
-    async def test_get_institutions_by_lei_list_item_not_existing(self, query_session: AsyncSession):
+    async def test_get_institutions_by_lei_list_item_not_existing(
+        self, query_session: AsyncSession
+    ):
         res = await repo.get_institutions(query_session, leis=["NOTTESTBANK"])
         assert len(res) == 0
 
