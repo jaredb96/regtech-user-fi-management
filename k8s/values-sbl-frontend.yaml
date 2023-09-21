@@ -1,0 +1,34 @@
+fullnameOverride: "sbl-frontend"
+image:
+  repository: ""
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+service:
+  containerPort: "8080"
+
+volumes:
+- name: nginx
+  emptyDir: {}
+
+volumeMounts:
+- name: nginx
+  mountPath: /run
+
+env:
+- name: SBL_DEV_PORT
+  value: "8899"
+- name: SBL_OIDC_AUTHORITY
+  value: "http://localhost:8880/realms/regtech"
+- name: SBL_OIDC_CLIENT_ID
+  value: "regtech-client"
+- name: SBL_OIDC_REDIRECT_URI
+  value: "http://localhost:${SBL_DEV_PORT}/filing"
+- name: SBL_REGTECH_BASE_URL
+  value: "http://localhost:8881"
+
+mapping:
+  enabled: true
+  host: ""
+  ambassador_id:
+    - --apiVersion-v3alpha1-only--default
