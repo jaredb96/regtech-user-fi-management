@@ -19,7 +19,7 @@ class FinancialInsitutionDomainDto(FinancialInsitutionDomainBase):
 
 
 class FinancialInstitutionBase(BaseModel):
-    name: str
+    legal_name: str
 
 
 class FinancialInstitutionDto(FinancialInstitutionBase):
@@ -35,6 +35,34 @@ class FinancialInstitutionWithDomainsDto(FinancialInstitutionDto):
 
 class DeniedDomainDto(BaseModel):
     domain: str
+
+    class Config:
+        from_attributes = True
+
+
+class FederalRegulatorDto(BaseModel):
+    id: str
+
+    class Config:
+        from_attributes = True
+
+
+class HMDAInstitutionTypeDto(BaseModel):
+    id: str
+
+    class Config:
+        from_attributes = True
+
+
+class SBLInstitutionTypeDto(BaseModel):
+    id: str
+
+    class Config:
+        from_attributes = True
+
+
+class AddressStateDto(BaseModel):
+    code: str
 
     class Config:
         from_attributes = True
