@@ -19,11 +19,27 @@ class FinancialInsitutionDomainDto(FinancialInsitutionDomainBase):
 
 
 class FinancialInstitutionBase(BaseModel):
-    legal_name: str
+    name: str
 
 
 class FinancialInstitutionDto(FinancialInstitutionBase):
     lei: str
+    tax_id: str
+    rssd_id: int
+    primary_federal_regulator_id: str
+    hmda_institution_type_id: str
+    sbl_institution_type_id: str
+    hq_address_street_1: str
+    hq_address_street_2: str
+    hq_address_city: str
+    hq_address_state: str
+    hq_address_zip: str
+    parent_lei: str
+    parent_legal_name: str
+    parent_rssd_id: int
+    top_holder_lei: str
+    top_holder_legal_name: str
+    top_holder_rssd_id: int
 
     class Config:
         from_attributes = True
@@ -40,29 +56,45 @@ class DeniedDomainDto(BaseModel):
         from_attributes = True
 
 
-class FederalRegulatorDto(BaseModel):
+class FederalRegulatorBase(BaseModel):
     id: str
+
+
+class FederalRegulatorDto(FederalRegulatorBase):
+    name: str
 
     class Config:
         from_attributes = True
 
 
-class HMDAInstitutionTypeDto(BaseModel):
+class HMDAInstitutionTypeBase(BaseModel):
     id: str
+
+
+class HMDAInstitutionTypeDto(HMDAInstitutionTypeBase):
+    name: str
 
     class Config:
         from_attributes = True
 
 
-class SBLInstitutionTypeDto(BaseModel):
+class SBLInstitutionTypeBase(BaseModel):
     id: str
+
+
+class SBLInstitutionTypeDto(SBLInstitutionTypeBase):
+    name: str
 
     class Config:
         from_attributes = True
 
 
-class AddressStateDto(BaseModel):
+class AddressStateBase(BaseModel):
     code: str
+
+
+class AddressStateDto(AddressStateBase):
+    name: str
 
     class Config:
         from_attributes = True

@@ -17,11 +17,11 @@ class AuditMixin(object):
 class FinancialInstitutionDao(AuditMixin, Base):
     __tablename__ = "financial_institutions"
     lei: Mapped[str] = mapped_column(unique=True, index=True, primary_key=True)
-    legal_name: Mapped[str] = mapped_column(index=True)
+    name: Mapped[str] = mapped_column(index=True)
     domains: Mapped[List["FinancialInstitutionDomainDao"]] = relationship(
         "FinancialInstitutionDomainDao", back_populates="fi"
     )
-    tax_id: Mapped[str] = mapped_column(unique=True)
+    tax_id: Mapped[str] = mapped_column(String(9), unique=True)
     rssd_id: Mapped[int] = mapped_column(unique=True)
     primary_federal_regulator_id: Mapped[str] = mapped_column(
         ForeignKey("federal_regulator.id"), index=True, primary_key=True
