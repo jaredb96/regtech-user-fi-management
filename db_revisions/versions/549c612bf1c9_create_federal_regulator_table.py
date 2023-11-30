@@ -1,7 +1,7 @@
 """Create Federal Regulator Table
 
 Revision ID: 549c612bf1c9
-Revises: 20e0d51d8be9
+Revises: "8b1ba6a3275b"
 Create Date: 2023-11-29 12:09:20.012400
 
 """
@@ -13,7 +13,7 @@ import sqlalchemy as sa
 
 # revision identifiers, used by Alembic.
 revision: str = "549c612bf1c9"
-down_revision: Union[str, None] = "20e0d51d8be9"
+down_revision: Union[str, None] = "8b1ba6a3275b"
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 

@@ -1,7 +1,7 @@
 """Create Address State Table
 
 Revision ID: 1f6c33f20a2e
-Revises: 20e0d51d8be9
+Revises: "20e0d51d8be9"
 Create Date: 2023-11-29 12:03:41.737864
 
 """

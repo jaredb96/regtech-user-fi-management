@@ -1,7 +1,7 @@
 """Create HMDA Institution Type Table
 
 Revision ID: 8b1ba6a3275b
-Revises: 20e0d51d8be9
+Revises: "56ef0b5cd2d4"
 Create Date: 2023-11-29 12:14:16.694281
 
 """
@@ -13,7 +13,7 @@ import sqlalchemy as sa
 
 # revision identifiers, used by Alembic.
 revision: str = "8b1ba6a3275b"
-down_revision: Union[str, None] = "20e0d51d8be9"
+down_revision: Union[str, None] = "56ef0b5cd2d4"
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 

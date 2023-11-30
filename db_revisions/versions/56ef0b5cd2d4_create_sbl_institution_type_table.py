@@ -1,7 +1,7 @@
 """Create SBL Institution Type Table
 
 Revision ID: 56ef0b5cd2d4
-Revises: 20e0d51d8be9
+Revises: "1f6c33f20a2e"
 Create Date: 2023-11-29 12:20:05.593826
 
 """
@@ -13,7 +13,7 @@ import sqlalchemy as sa
 
 # revision identifiers, used by Alembic.
 revision: str = "56ef0b5cd2d4"
-down_revision: Union[str, None] = "20e0d51d8be9"
+down_revision: Union[str, None] = "1f6c33f20a2e"
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 

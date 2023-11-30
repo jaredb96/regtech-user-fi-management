@@ -1,7 +1,7 @@
 """Update Financial Institutions Table
 
 Revision ID: 045aa502e050
-Revises: 20e0d51d8be9
+Revises: "549c612bf1c9"
 Create Date: 2023-11-29 11:55:10.328766
 
 """
@@ -13,9 +13,9 @@ import sqlalchemy as sa
 
 # revision identifiers, used by Alembic.
 revision: str = "045aa502e050"
-down_revision: Union[str, None] = "20e0d51d8be9"
+down_revision: Union[str, None] = "549c612bf1c9"
 branch_labels: Union[str, Sequence[str], None] = None
-depends_on = ["1f6c33f20a2e", "8b1ba6a3275b", "56ef0b5cd2d4", "549c612bf1c9"]
+depends_on: Union[str, Sequence[str], None] = None
 
 
 def upgrade() -> None:
