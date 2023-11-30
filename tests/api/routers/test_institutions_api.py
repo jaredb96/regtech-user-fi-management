@@ -40,6 +40,22 @@ class TestInstitutionsApi:
             name="testName",
             lei="testLei",
             domains=[FinancialInstitutionDomainDao(domain="test.bank", lei="TESTBANK123")],
+            tax_id="123456789",
+            rssd_id=1234,
+            primary_federal_regulator_id="FRI1",
+            hmda_institution_type_id="HIT1",
+            sbl_institution_type_id="SIT1",
+            hq_address_street_1="Test Address Street 1",
+            hq_address_street_2="",
+            hq_address_city="Test City 1",
+            hq_address_state="TN",
+            hq_address_zip="00000",
+            parent_lei="PARENTTESTBANK123",
+            parent_legal_name="PARENT TEST BANK 123",
+            parent_rssd_id=12345,
+            top_holder_lei="TOPHOLDERLEI123",
+            top_holder_legal_name="TOP HOLDER LEI 123",
+            top_holder_rssd_id=123456,
         )
         upsert_group_mock = mocker.patch("oauth2.oauth2_admin.OAuth2Admin.upsert_group")
         upsert_group_mock.return_value = "leiGroup"
@@ -50,7 +66,7 @@ class TestInstitutionsApi:
                 "name": "testName",
                 "lei": "testLei",
                 "tax_id": "123456789",
-                "ssd_id": 1234,
+                "rssd_id": 12344,
                 "primary_federal_regulator_id": "FRI1",
                 "hmda_institution_type_id": "HIT1",
                 "sbl_institution_type_id": "SIT1",
@@ -82,7 +98,29 @@ class TestInstitutionsApi:
             AuthenticatedUser.from_claim(claims),
         )
         client = TestClient(app_fixture)
-        res = client.post("/v1/institutions/", json={"name": "testName", "lei": "testLei"})
+        res = client.post(
+            "/v1/institutions/",
+            json={
+                "name": "testName",
+                "lei": "testLei",
+                "tax_id": "123456789",
+                "rssd_id": 12344,
+                "primary_federal_regulator_id": "FRI1",
+                "hmda_institution_type_id": "HIT1",
+                "sbl_institution_type_id": "SIT1",
+                "hq_address_street_1": "Test Address Street 1",
+                "hq_address_street_2": "",
+                "hq_address_city": "Test City 1",
+                "hq_address_state": "TN",
+                "hq_address_zip": "00000",
+                "parent_lei": "PARENTTESTBANK123",
+                "parent_legal_name": "PARENT TEST BANK 123",
+                "parent_rssd_id": 12345,
+                "top_holder_lei": "TOPHOLDERLEI123",
+                "top_holder_legal_name": "TOP HOLDER LEI 123",
+                "top_holder_rssd_id": 123456,
+            },
+        )
         assert res.status_code == 403
 
     def test_get_institution_unauthed(self, app_fixture: FastAPI, unauthed_user_mock: Mock):
