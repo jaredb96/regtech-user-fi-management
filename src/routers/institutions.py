@@ -58,6 +58,22 @@ async def get_associated_institutions(request: Request):
         FinanicialInstitutionAssociationDto(
             name=institution.name,
             lei=institution.lei,
+            tax_id="123456789",
+            rssd_id=1234,
+            primary_federal_regulator_id="FRI1",
+            hmda_institution_type_id="HIT1",
+            sbl_institution_type_id="SIT1",
+            hq_address_street_1="Test Address Street 1",
+            hq_address_street_2="",
+            hq_address_city="Test City 1",
+            hq_address_state="TN",
+            hq_address_zip="00000",
+            parent_lei="PARENTTESTBANK123",
+            parent_legal_name="PARENT TEST BANK 123",
+            parent_rssd_id=12345,
+            top_holder_lei="TOPHOLDERLEI123",
+            top_holder_legal_name="TOP HOLDER LEI 123",
+            top_holder_rssd_id=123456,
             approved=email_domain in [inst_domain.domain for inst_domain in institution.domains],
         )
         for institution in associated_institutions
