@@ -10,6 +10,8 @@ from typing import Sequence, Union
 from alembic import op
 import sqlalchemy as sa
 
+from db_revisions.utils import table_exists
+
 
 # revision identifiers, used by Alembic.
 revision: str = "549c612bf1c9"
@@ -19,14 +21,15 @@ depends_on: Union[str, Sequence[str], None] = None
 
 
 def upgrade() -> None:
-    op.create_table(
-        "federal_regulator",
-        sa.Column("id", sa.String(length=4), nullable=False),
-        sa.Column("name", sa.String(), nullable=False),
-        sa.Column("event_time", sa.DateTime(), server_default=sa.text("now()"), nullable=False),
-        sa.PrimaryKeyConstraint("id"),
-        sa.UniqueConstraint("name"),
-    )
+    if not table_exists("federal_regulator"):
+        op.create_table(
+            "federal_regulator",
+            sa.Column("id", sa.String(length=4), nullable=False),
+            sa.Column("name", sa.String(), nullable=False),
+            sa.Column("event_time", sa.DateTime(), server_default=sa.func.now(), nullable=False),
+            sa.PrimaryKeyConstraint("id"),
+            sa.UniqueConstraint("name"),
+        )
 
 
 def downgrade() -> None:
