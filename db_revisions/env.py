@@ -86,11 +86,15 @@ def run_migrations_online() -> None:
             context.config.get_section(context.config.config_ini_section, {}),
             prefix="sqlalchemy.",
             poolclass=pool.NullPool,
+            render_as_batch=True,
         )
 
     with connectable.connect() as connection:
         context.configure(
-            connection=connection, target_metadata=target_metadata, version_table_schema=target_metadata.schema
+            connection=connection,
+            target_metadata=target_metadata,
+            version_table_schema=target_metadata.schema,
+            render_as_batch=True,
         )
 
         with context.begin_transaction():
