@@ -22,24 +22,24 @@ depends_on: Union[str, Sequence[str], None] = None
 
 def upgrade() -> None:
     if table_exists("financial_institutions"):
-        op.add_column("financial_institutions", sa.Column("tax_id", sa.String(length=9), nullable=False))
-        op.add_column("financial_institutions", sa.Column("rssd_id", sa.Integer(), nullable=False))
+        op.add_column("financial_institutions", sa.Column("tax_id", sa.String(length=9), nullable=True))
+        op.add_column("financial_institutions", sa.Column("rssd_id", sa.Integer(), nullable=True))
         op.add_column(
-            "financial_institutions", sa.Column("primary_federal_regulator_id", sa.String(length=4), nullable=False)
+            "financial_institutions", sa.Column("primary_federal_regulator_id", sa.String(length=4), nullable=True)
         )
-        op.add_column("financial_institutions", sa.Column("hmda_institution_type_id", sa.String(), nullable=False))
-        op.add_column("financial_institutions", sa.Column("sbl_institution_type_id", sa.String(), nullable=False))
+        op.add_column("financial_institutions", sa.Column("hmda_institution_type_id", sa.String(), nullable=True))
+        op.add_column("financial_institutions", sa.Column("sbl_institution_type_id", sa.String(), nullable=True))
         op.add_column("financial_institutions", sa.Column("hq_address_street_1", sa.String(), nullable=False))
-        op.add_column("financial_institutions", sa.Column("hq_address_street_2", sa.String(), nullable=False))
-        op.add_column("financial_institutions", sa.Column("hq_address_city", sa.String(), nullable=False))
-        op.add_column("financial_institutions", sa.Column("hq_address_state", sa.String(length=2), nullable=False))
+        op.add_column("financial_institutions", sa.Column("hq_address_street_2", sa.String(), nullable=True))
+        op.add_column("financial_institutions", sa.Column("hq_address_city", sa.String(), nullable=True))
+        op.add_column("financial_institutions", sa.Column("hq_address_state", sa.String(length=2), nullable=True))
         op.add_column("financial_institutions", sa.Column("hq_address_zip", sa.String(length=5), nullable=False))
-        op.add_column("financial_institutions", sa.Column("parent_lei", sa.String(length=20), nullable=False))
-        op.add_column("financial_institutions", sa.Column("parent_legal_name", sa.String(), nullable=False))
-        op.add_column("financial_institutions", sa.Column("parent_rssd_id", sa.Integer(), nullable=False))
-        op.add_column("financial_institutions", sa.Column("top_holder_lei", sa.String(length=20), nullable=False))
-        op.add_column("financial_institutions", sa.Column("top_holder_legal_name", sa.String(), nullable=False))
-        op.add_column("financial_institutions", sa.Column("top_holder_rssd_id", sa.Integer(), nullable=False))
+        op.add_column("financial_institutions", sa.Column("parent_lei", sa.String(length=20), nullable=True))
+        op.add_column("financial_institutions", sa.Column("parent_legal_name", sa.String(), nullable=True))
+        op.add_column("financial_institutions", sa.Column("parent_rssd_id", sa.Integer(), nullable=True))
+        op.add_column("financial_institutions", sa.Column("top_holder_lei", sa.String(length=20), nullable=True))
+        op.add_column("financial_institutions", sa.Column("top_holder_legal_name", sa.String(), nullable=True))
+        op.add_column("financial_institutions", sa.Column("top_holder_rssd_id", sa.Integer(), nullable=True))
         op.create_index(
             op.f("ix_financial_institutions_hmda_institution_type_id"),
             "financial_institutions",
