@@ -10,6 +10,10 @@ from entities.models import (
     FinancialInstitutionDto,
     FinancialInsitutionDomainCreate,
     DeniedDomainDao,
+    FederalRegulatorDao,
+    HMDAInstitutionTypeDao,
+    SBLInstitutionTypeDao,
+    AddressStateDao,
 )
 
 
@@ -49,7 +53,42 @@ async def get_institution(session: AsyncSession, lei: str) -> FinancialInstituti
         return await session.scalar(stmt)
 
 
-async def upsert_institution(session: AsyncSession, fi: FinancialInstitutionDto) -> FinancialInstitutionDao:
+async def get_state(session: AsyncSession, code: str) -> AddressStateDao:
+    async with session.begin():
+        stmt = select(AddressStateDao).filter(AddressStateDao.code == code)
+        return await session.scalar(stmt)
+
+
+async def get_federal_regulator(session: AsyncSession, id: str) -> FederalRegulatorDao:
+    async with session.begin():
+        stmt = select(FederalRegulatorDao).filter(FederalRegulatorDao.id == id)
+        return await session.scalar(stmt)
+
+
+async def get_hmda_institution_type(session: AsyncSession, id: str) -> HMDAInstitutionTypeDao:
+    async with session.begin():
+        stmt = select(HMDAInstitutionTypeDao).filter(HMDAInstitutionTypeDao.id == id)
+        return await session.scalar(stmt)
+
+
+async def get_sbl_institution_type(session: AsyncSession, id: str) -> SBLInstitutionTypeDao:
+    async with session.begin():
+        stmt = select(SBLInstitutionTypeDao).filter(SBLInstitutionTypeDao.id == id)
+        return await session.scalar(stmt)
+
+
+"""
+primary_federal_regulator=get_federal_regulator(session=session, id=fi.primary_federal_regulator_id),
+hmda_institution_type=get_hmda_institution_type(session=session, id=fi.hmda_institution_type_id),
+sbl_institution_type=get_sbl_institution_type(session=session, id=fi.hmda_institution_type_id),
+hq_address_state=get_state(session=session, code=fi.hq_address_state_code),
+"""
+
+
+async def upsert_institution(
+    session: AsyncSession,
+    fi: FinancialInstitutionDto,
+) -> FinancialInstitutionDao:
     async with session.begin():
         stmt = select(FinancialInstitutionDao).filter(FinancialInstitutionDao.lei == fi.lei)
         res = await session.execute(stmt)
@@ -66,7 +105,7 @@ async def upsert_institution(session: AsyncSession, fi: FinancialInstitutionDto)
                 hq_address_street_1=fi.hq_address_street_1,
                 hq_address_street_2=fi.hq_address_street_2,
                 hq_address_city=fi.hq_address_city,
-                hq_address_state=fi.hq_address_state,
+                hq_address_state_code=fi.hq_address_state_code,
                 hq_address_zip=fi.hq_address_zip,
                 parent_lei=fi.parent_lei,
                 parent_legal_name=fi.parent_legal_name,

@@ -32,7 +32,7 @@ class FinancialInstitutionDto(FinancialInstitutionBase):
     hq_address_street_1: str
     hq_address_street_2: str
     hq_address_city: str
-    hq_address_state: str
+    hq_address_state_code: str
     hq_address_zip: str
     parent_lei: str
     parent_legal_name: str

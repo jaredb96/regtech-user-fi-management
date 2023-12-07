@@ -23,19 +23,17 @@ class FinancialInstitutionDao(AuditMixin, Base):
     )
     tax_id: Mapped[str] = mapped_column(String(9), unique=True)
     rssd_id: Mapped[int] = mapped_column(unique=True)
-    primary_federal_regulator_id: Mapped[str] = mapped_column(
-        ForeignKey("federal_regulator.id"), index=True, primary_key=True
-    )
-    hmda_institution_type_id: Mapped[str] = mapped_column(
-        ForeignKey("hmda_institution_type.id"), index=True, primary_key=True
-    )
-    sbl_institution_type_id: Mapped[str] = mapped_column(
-        ForeignKey("sbl_institution_type.id"), index=True, primary_key=True
-    )
+    primary_federal_regulator_id: Mapped[str] = mapped_column(ForeignKey("federal_regulator.id"))
+    primary_federal_regulator: Mapped["FederalRegulatorDao"] = relationship(lazy="selectin")
+    hmda_institution_type_id: Mapped[str] = mapped_column(ForeignKey("hmda_institution_type.id"))
+    hmda_institution_type: Mapped["HMDAInstitutionTypeDao"] = relationship(lazy="selectin")
+    sbl_institution_type_id: Mapped[str] = mapped_column(ForeignKey("sbl_institution_type.id"))
+    sbl_institution_type: Mapped["SBLInstitutionTypeDao"] = relationship(lazy="selectin")
     hq_address_street_1: Mapped[str] = mapped_column(nullable=False)
     hq_address_street_2: Mapped[str]
     hq_address_city: Mapped[str]
-    hq_address_state: Mapped[str] = mapped_column(ForeignKey("address_state.code"), index=True, primary_key=True)
+    hq_address_state_code: Mapped[str] = mapped_column(ForeignKey("address_state.code"))
+    hq_address_state: Mapped["AddressStateDao"] = relationship(lazy="selectin")
     hq_address_zip: Mapped[str] = mapped_column(String(5), nullable=False)
     parent_lei: Mapped[str] = mapped_column(String(20))
     parent_legal_name: Mapped[str]
@@ -59,23 +57,23 @@ class DeniedDomainDao(AuditMixin, Base):
 
 class FederalRegulatorDao(AuditMixin, Base):
     __tablename__ = "federal_regulator"
-    id: Mapped[str] = mapped_column(String(4), index=True, primary_key=True)
+    id: Mapped[str] = mapped_column(String(4), index=True, primary_key=True, unique=True)
     name: Mapped[str] = mapped_column(unique=True, nullable=False)
 
 
 class HMDAInstitutionTypeDao(AuditMixin, Base):
     __tablename__ = "hmda_institution_type"
-    id: Mapped[str] = mapped_column(index=True, primary_key=True)
+    id: Mapped[str] = mapped_column(index=True, primary_key=True, unique=True)
     name: Mapped[str] = mapped_column(unique=True)
 
 
 class SBLInstitutionTypeDao(AuditMixin, Base):
     __tablename__ = "sbl_institution_type"
-    id: Mapped[str] = mapped_column(index=True, primary_key=True)
+    id: Mapped[str] = mapped_column(index=True, primary_key=True, unique=True)
     name: Mapped[str] = mapped_column(unique=True, nullable=False)
 
 
 class AddressStateDao(AuditMixin, Base):
     __tablename__ = "address_state"
-    code: Mapped[str] = mapped_column(String(2), primary_key=True)
+    code: Mapped[str] = mapped_column(String(2), index=True, primary_key=True, unique=True)
     name: Mapped[str] = mapped_column(unique=True, nullable=False)

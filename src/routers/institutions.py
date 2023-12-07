@@ -66,7 +66,7 @@ async def get_associated_institutions(request: Request):
             hq_address_street_1="Test Address Street 1",
             hq_address_street_2="",
             hq_address_city="Test City 1",
-            hq_address_state="TN",
+            hq_address_state_code="CA",
             hq_address_zip="00000",
             parent_lei="PARENTTESTBANK123",
             parent_legal_name="PARENT TEST BANK 123",
