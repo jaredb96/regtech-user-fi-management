@@ -11,7 +11,7 @@ from pytest_alembic import MigrationContext
 
 
 def test_tables_exist_after_migration(alembic_runner: MigrationContext, alembic_engine: Engine):
-    alembic_runner.migrate_up_to("20e0d51d8be9")
+    alembic_runner.migrate_up_to("045aa502e050")
 
     inspector = sqlalchemy.inspect(alembic_engine)
     tables = inspector.get_table_names()

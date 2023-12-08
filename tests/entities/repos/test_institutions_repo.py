@@ -212,34 +212,34 @@ class TestInstitutionsRepo:
         assert await repo.is_domain_allowed(transaction_session, "yahoo.com") is False
         assert await repo.is_domain_allowed(transaction_session, "gmail.com") is True
 
-    async def test_institutions_mapped_to_state_dao_valid(self, query_session: AsyncSession):
+    async def test_institution_mapped_to_state_valid(self, query_session: AsyncSession):
         res = await repo.get_institutions(query_session, leis=["TESTBANK123"])
         assert res[0].hq_address_state.name == "Georgia"
 
-    async def test_institutions_mapped_to_state_dao_invalid(self, query_session: AsyncSession):
+    async def test_institution_mapped_to_state_invalid(self, query_session: AsyncSession):
         res = await repo.get_institutions(query_session, leis=["TESTBANK456"])
         assert res[0].hq_address_state.name != "Georgia"
 
-    async def test_institutions_mapped_to_federal_regulator_dao_valid(self, query_session: AsyncSession):
+    async def test_institution_mapped_to_federal_regulator_valid(self, query_session: AsyncSession):
         res = await repo.get_institutions(query_session, leis=["TESTBANK456"])
         assert res[0].primary_federal_regulator.name != "Test Federal Regulator ID 1"
 
-    async def test_institutions_mapped_to_federal_regulator_dao_invalid(self, query_session: AsyncSession):
+    async def test_institution_mapped_to_federal_regulator_invalid(self, query_session: AsyncSession):
         res = await repo.get_institutions(query_session, leis=["TESTBANK123"])
         assert res[0].primary_federal_regulator.name == "Test Federal Regulator ID 1"
 
-    async def test_institutions_mapped_to_hmda_it_dao_valid(self, query_session: AsyncSession):
+    async def test_institution_mapped_to_hmda_it_valid(self, query_session: AsyncSession):
         res = await repo.get_institutions(query_session, leis=["TESTBANK123"])
         assert res[0].hmda_institution_type.name == "Test HMDA Instituion ID 1"
 
-    async def test_institutions_mapped_to_hmda_it_dao_invalid(self, query_session: AsyncSession):
+    async def test_institution_mapped_to_hmda_it_invalid(self, query_session: AsyncSession):
         res = await repo.get_institutions(query_session, leis=["TESTBANK456"])
         assert res[0].hmda_institution_type.name != "Test HMDA Instituion ID 1"
 
-    async def test_institutions_mapped_to_sbl_it_dao_valid(self, query_session: AsyncSession):
+    async def test_institution_mapped_to_sbl_it_valid(self, query_session: AsyncSession):
         res = await repo.get_institutions(query_session, leis=["TESTBANK123"])
         assert res[0].sbl_institution_type.name == "Test SBL Instituion ID 1"
 
-    async def test_institutions_mapped_to_sbl_it_dao_invalid(self, query_session: AsyncSession):
+    async def test_institution_mapped_to_sbl_it_invalid(self, query_session: AsyncSession):
         res = await repo.get_institutions(query_session, leis=["TESTBANK456"])
         assert res[0].sbl_institution_type.name != "Test SBL Instituion ID 1"
