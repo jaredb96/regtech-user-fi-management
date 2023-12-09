@@ -27,7 +27,7 @@ def upgrade() -> None:
         batch_op.add_column(sa.Column("hq_address_street_1", sa.String(), nullable=False))
         batch_op.add_column(sa.Column("hq_address_street_2", sa.String(), nullable=True))
         batch_op.add_column(sa.Column("hq_address_city", sa.String(), nullable=True))
-        batch_op.add_column(sa.Column("hq_address_state", sa.String(length=2), nullable=True))
+        batch_op.add_column(sa.Column("hq_address_state_code", sa.String(length=2), nullable=True))
         batch_op.add_column(sa.Column("hq_address_zip", sa.String(length=5), nullable=False))
         batch_op.add_column(sa.Column("parent_lei", sa.String(length=20), nullable=True))
         batch_op.add_column(sa.Column("parent_legal_name", sa.String(), nullable=True))
@@ -41,8 +41,8 @@ def upgrade() -> None:
             unique=False,
         )
         batch_op.create_index(
-            batch_op.f("ix_financial_institutions_hq_address_state"),
-            ["hq_address_state"],
+            batch_op.f("ix_financial_institutions_hq_address_state_code"),
+            ["hq_address_state_code"],
             unique=False,
         )
         batch_op.create_index(
@@ -64,7 +64,7 @@ def upgrade() -> None:
             ["id"],
         )
         batch_op.create_foreign_key(
-            "fk_address_state_financial_institutions", "address_state", ["hq_address_state"], ["code"]
+            "fk_address_state_code_financial_institutions", "address_state", ["hq_address_state_code"], ["code"]
         )
         batch_op.create_foreign_key(
             "fk_hmda_institution_type_financial_institutions",
@@ -98,7 +98,7 @@ def downgrade() -> None:
     op.drop_column("financial_institutions", "parent_legal_name")
     op.drop_column("financial_institutions", "parent_lei")
     op.drop_column("financial_institutions", "hq_address_zip")
-    op.drop_column("financial_institutions", "hq_address_state")
+    op.drop_column("financial_institutions", "hq_address_state_code")
     op.drop_column("financial_institutions", "hq_address_city")
     op.drop_column("financial_institutions", "hq_address_street_2")
     op.drop_column("financial_institutions", "hq_address_street_1")
