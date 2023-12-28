@@ -84,9 +84,11 @@ class InstitutionTypeDto(BaseModel):
 class HMDAInstitutionTypeDto(InstitutionTypeDto):
     pass
 
+
 class SBLInstitutionTypeDto(InstitutionTypeDto):
     pass
-    
+
+
 class AddressStateBase(BaseModel):
     code: str
 
