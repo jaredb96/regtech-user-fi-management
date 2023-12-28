@@ -21,6 +21,7 @@ class FinancialInsitutionDomainDto(FinancialInsitutionDomainBase):
 class FinancialInstitutionBase(BaseModel):
     lei: str
     name: str
+    is_active: bool
 
 
 class FinancialInstitutionDto(FinancialInstitutionBase):
@@ -45,10 +46,6 @@ class FinancialInstitutionDto(FinancialInstitutionBase):
         from_attributes = True
 
 
-class FinancialInstitutionWithDomainsDto(FinancialInstitutionDto):
-    domains: List[FinancialInsitutionDomainDto] = []
-
-
 class DeniedDomainDto(BaseModel):
     domain: str
 
@@ -63,10 +60,6 @@ class UserProfile(BaseModel):
 
     def to_keycloak_user(self):
         return {"firstName": self.first_name, "lastName": self.last_name}
-
-
-class FinanicialInstitutionAssociationDto(FinancialInstitutionDto):
-    approved: bool
 
 
 class FederalRegulatorBase(BaseModel):
@@ -88,30 +81,12 @@ class InstitutionTypeDto(BaseModel):
         from_attributes = True
 
 
-# Let this in here just in case the 'generic' InstitutionTypeDto approach isn't desired
-#
-# class HMDAInstitutionTypeBase(BaseModel):
-#     id: str
+class HMDAInstitutionTypeDto(InstitutionTypeDto):
+    pass
 
-
-# class HMDAInstitutionTypeDto(HMDAInstitutionTypeBase):
-#     name: str
-#
-#     class Config:
-#         from_attributes = True
-
-
-# class SBLInstitutionTypeBase(BaseModel):
-#     id: str
-
-
-# class SBLInstitutionTypeDto(SBLInstitutionTypeBase):
-#     name: str
-#
-#     class Config:
-#         from_attributes = True
-
-
+class SBLInstitutionTypeDto(InstitutionTypeDto):
+    pass
+    
 class AddressStateBase(BaseModel):
     code: str
 
@@ -121,6 +96,18 @@ class AddressStateDto(AddressStateBase):
 
     class Config:
         from_attributes = True
+
+
+class FinancialInstitutionWithRelationsDto(FinancialInstitutionDto):
+    primary_federal_regulator: FederalRegulatorDto | None = None
+    hmda_institution_type: HMDAInstitutionTypeDto | None = None
+    sbl_institution_type: SBLInstitutionTypeDto | None = None
+    hq_address_state: AddressStateDto
+    domains: List[FinancialInsitutionDomainDto] = []
+
+
+class FinanicialInstitutionAssociationDto(FinancialInstitutionWithRelationsDto):
+    approved: bool
 
 
 class AuthenticatedUser(BaseUser, BaseModel):

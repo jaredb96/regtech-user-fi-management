@@ -5,7 +5,14 @@ from fastapi.testclient import TestClient
 from pytest_mock import MockerFixture
 from starlette.authentication import AuthCredentials
 from oauth2.oauth2_backend import AuthenticatedUser
-from entities.models import FinancialInstitutionDao, FinancialInstitutionDomainDao
+from entities.models import (
+    FinancialInstitutionDao,
+    FinancialInstitutionDomainDao,
+    FederalRegulatorDao,
+    AddressStateDao,
+    HMDAInstitutionTypeDao,
+    SBLInstitutionTypeDao,
+)
 
 
 class TestInstitutionsApi:
@@ -32,16 +39,21 @@ class TestInstitutionsApi:
         upsert_institution_mock.return_value = FinancialInstitutionDao(
             name="testName",
             lei="testLei",
+            is_active=True,
             domains=[FinancialInstitutionDomainDao(domain="test.bank", lei="TESTBANK123")],
             tax_id="123456789",
             rssd_id=1234,
             primary_federal_regulator_id="FRI2",
+            primary_federal_regulator=FederalRegulatorDao(id="FRI2", name="FRI2"),
             hmda_institution_type_id="HIT2",
+            hmda_institution_type=HMDAInstitutionTypeDao(id="HIT2", name="HIT2"),
             sbl_institution_type_id="SIT2",
+            sbl_institution_type=SBLInstitutionTypeDao(id="SIT2", name="SIT2"),
             hq_address_street_1="Test Address Street 1",
             hq_address_street_2="",
             hq_address_city="Test City 1",
             hq_address_state_code="VA",
+            hq_address_state=AddressStateDao(code="VA", name="Virginia"),
             hq_address_zip="00000",
             parent_lei="PARENTTESTBANK123",
             parent_legal_name="PARENT TEST BANK 123",
@@ -58,6 +70,7 @@ class TestInstitutionsApi:
             json={
                 "name": "testName",
                 "lei": "testLei",
+                "is_active": True,
                 "tax_id": "123456789",
                 "rssd_id": 12344,
                 "primary_federal_regulator_id": "FRI2",
@@ -86,9 +99,11 @@ class TestInstitutionsApi:
         upsert_institution_mock.return_value = FinancialInstitutionDao(
             name="testName",
             lei="testLei",
+            is_active=True,
             hq_address_street_1="Test Address Street 1",
             hq_address_city="Test City 1",
             hq_address_state_code="VA",
+            hq_address_state=AddressStateDao(code="VA", name="Virginia"),
             hq_address_zip="00000",
         )
         upsert_group_mock = mocker.patch("oauth2.oauth2_admin.OAuth2Admin.upsert_group")
@@ -99,6 +114,7 @@ class TestInstitutionsApi:
             json={
                 "name": "testName",
                 "lei": "testLei",
+                "is_active": True,
                 "hq_address_street_1": "Test Address Street 1",
                 "hq_address_city": "Test City 1",
                 "hq_address_state_code": "VA",
@@ -142,6 +158,7 @@ class TestInstitutionsApi:
             json={
                 "name": "testName",
                 "lei": "testLei",
+                "is_active": True,
                 "tax_id": "123456789",
                 "rssd_id": 12344,
                 "primary_federal_regulator_id": "FIR2",
@@ -173,16 +190,21 @@ class TestInstitutionsApi:
         get_institution_mock.return_value = FinancialInstitutionDao(
             name="Test Bank 123",
             lei="TESTBANK123",
+            is_active=True,
             domains=[FinancialInstitutionDomainDao(domain="test.bank", lei="TESTBANK123")],
             tax_id="123456789",
             rssd_id=1234,
             primary_federal_regulator_id="FRI1",
+            primary_federal_regulator=FederalRegulatorDao(id="FRI1", name="FRI1"),
             hmda_institution_type_id="HIT1",
+            hmda_institution_type=HMDAInstitutionTypeDao(id="HIT1", name="HIT1"),
             sbl_institution_type_id="SIT1",
+            sbl_institution_type=SBLInstitutionTypeDao(id="SIT1", name="SIT1"),
             hq_address_street_1="Test Address Street 1",
             hq_address_street_2="",
             hq_address_city="Test City 1",
             hq_address_state_code="GA",
+            hq_address_state=AddressStateDao(code="GA", name="Georgia"),
             hq_address_zip="00000",
             parent_lei="PARENTTESTBANK123",
             parent_legal_name="PARENT TEST BANK 123",
@@ -266,16 +288,21 @@ class TestInstitutionsApi:
             FinancialInstitutionDao(
                 name="Test Bank 123",
                 lei="TESTBANK123",
+                is_active=True,
                 domains=[FinancialInstitutionDomainDao(domain="test123.bank", lei="TESTBANK123")],
                 tax_id="123456789",
                 rssd_id=1234,
                 primary_federal_regulator_id="FRI1",
+                primary_federal_regulator=FederalRegulatorDao(id="FRI1", name="FRI1"),
                 hmda_institution_type_id="HIT1",
+                hmda_institution_type=HMDAInstitutionTypeDao(id="HIT1", name="HIT1"),
                 sbl_institution_type_id="SIT1",
+                sbl_institution_type=SBLInstitutionTypeDao(id="SIT1", name="SIT1"),
                 hq_address_street_1="Test Address Street 1",
                 hq_address_street_2="",
                 hq_address_city="Test City 1",
                 hq_address_state_code="GA",
+                hq_address_state=AddressStateDao(code="GA", name="Georgia"),
                 hq_address_zip="00000",
                 parent_lei="PARENTTESTBANK123",
                 parent_legal_name="PARENT TEST BANK 123",
@@ -287,16 +314,21 @@ class TestInstitutionsApi:
             FinancialInstitutionDao(
                 name="Test Bank 234",
                 lei="TESTBANK234",
+                is_active=True,
                 domains=[FinancialInstitutionDomainDao(domain="test234.bank", lei="TESTBANK234")],
                 tax_id="123456879",
                 rssd_id=6879,
                 primary_federal_regulator_id="FRI1",
+                primary_federal_regulator=FederalRegulatorDao(id="FRI1", name="FRI1"),
                 hmda_institution_type_id="HIT1",
+                hmda_institution_type=HMDAInstitutionTypeDao(id="HIT1", name="HIT1"),
                 sbl_institution_type_id="SIT1",
+                sbl_institution_type=SBLInstitutionTypeDao(id="SIT1", name="SIT1"),
                 hq_address_street_1="Test Address Street 2",
                 hq_address_street_2="",
                 hq_address_city="Test City 2",
                 hq_address_state_code="GA",
+                hq_address_state=AddressStateDao(code="GA", name="Georgia"),
                 hq_address_zip="00000",
                 parent_lei="PARENTTESTBANK123",
                 parent_legal_name="PARENT TEST BANK 123",
