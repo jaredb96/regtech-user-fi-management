@@ -9,7 +9,11 @@ from entities.models import (
     FinancialInstitutionDomainDao,
     FinancialInstitutionDto,
     FinancialInsitutionDomainCreate,
+    HMDAInstitutionTypeDao,
+    SBLInstitutionTypeDao,
     DeniedDomainDao,
+    AddressStateDao,
+    FederalRegulatorDao
 )
 
 
@@ -43,7 +47,40 @@ async def get_institution(session: AsyncSession, lei: str) -> FinancialInstituti
             .filter(FinancialInstitutionDao.lei == lei)
         )
         return await session.scalar(stmt)
+    
 
+async def get_sbl_types(session: AsyncSession) -> SBLInstitutionTypeDao:
+    async with session.begin():
+        stmt = (
+            select(SBLInstitutionTypeDao)
+        )
+        res = await session.scalars(stmt)
+        return res.all()
+
+
+async def get_hmda_types(session: AsyncSession) -> HMDAInstitutionTypeDao:
+    async with session.begin():
+        stmt = (
+            select(HMDAInstitutionTypeDao)
+        )
+        res = await session.scalars(stmt)
+        return res.all()
+
+async def get_address_states(session: AsyncSession) -> AddressStateDao:
+    async with session.begin():
+        stmt = (
+            select(AddressStateDao)
+        )
+        res = await session.scalars(stmt)
+        return res.all()
+
+async def get_federal_regulators(session: AsyncSession) -> FederalRegulatorDao:
+    async with session.begin():
+        stmt = (
+            select(FederalRegulatorDao)
+        )
+        res = await session.scalars(stmt)
+        return res.all()
 
 async def upsert_institution(session: AsyncSession, fi: FinancialInstitutionDto) -> FinancialInstitutionDao:
     async with session.begin():
