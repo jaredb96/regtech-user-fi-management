@@ -59,7 +59,7 @@ class FederalRegulatorDao(AuditMixin, Base):
     __tablename__ = "federal_regulator"
     id: Mapped[str] = mapped_column(String(4), index=True, primary_key=True, unique=True)
     name: Mapped[str] = mapped_column(unique=True, nullable=False)
-    
+
 
 class HMDAInstitutionTypeDao(AuditMixin, Base):
     __tablename__ = "hmda_institution_type"

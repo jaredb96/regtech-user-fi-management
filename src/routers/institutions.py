@@ -17,12 +17,13 @@ from entities.models import (
     # SBLInstitutionTypeDto,
     AuthenticatedUser,
     AddressStateDto,
-    FederalRegulatorDto
+    FederalRegulatorDto,
 )
 from sqlalchemy.ext.asyncio import AsyncSession
 from starlette.authentication import requires
 
 InstitutionType = Literal["sbl", "hmda"]
+
 
 async def set_db(request: Request, session: Annotated[AsyncSession, Depends(get_session)]):
     request.state.db_session = session
@@ -85,28 +86,26 @@ async def get_associated_institutions(request: Request):
         for institution in associated_institutions
     ]
 
+
 @router.get("/types/{type}", response_model=List[InstitutionTypeDto])
 @requires("authenticated")
-async def get_institution_types(
-    request: Request,
-    type: InstitutionType
-):
+async def get_institution_types(request: Request, type: InstitutionType):
     if type == "sbl":
         return await repo.get_sbl_types(request.state.db_session)
     else:
-        return await repo.get_hmda_types(request.state.db_session) 
-    
+        return await repo.get_hmda_types(request.state.db_session)
+
 
 @router.get("/address-states", response_model=List[AddressStateDto])
 @requires("authenticated")
 async def get_address_states(request: Request):
-    return await repo.get_address_states(request.state.db_session) 
+    return await repo.get_address_states(request.state.db_session)
 
 
 @router.get("/regulators", response_model=List[FederalRegulatorDto])
 @requires("authenticated")
 async def get_federal_regulators(request: Request):
-    return await repo.get_federal_regulators(request.state.db_session) 
+    return await repo.get_federal_regulators(request.state.db_session)
 
 
 @router.get("/{lei}", response_model=FinancialInstitutionWithDomainsDto)

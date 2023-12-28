@@ -80,12 +80,13 @@ class FederalRegulatorDto(FederalRegulatorBase):
         from_attributes = True
 
 
-class InstitutionTypeDto(BaseModel ):
+class InstitutionTypeDto(BaseModel):
     id: str
     name: str
-    
+
     class Config:
         from_attributes = True
+
 
 # Let this in here just in case the 'generic' InstitutionTypeDto approach isn't desired
 #
@@ -95,7 +96,7 @@ class InstitutionTypeDto(BaseModel ):
 
 # class HMDAInstitutionTypeDto(HMDAInstitutionTypeBase):
 #     name: str
-# 
+#
 #     class Config:
 #         from_attributes = True
 
@@ -106,7 +107,7 @@ class InstitutionTypeDto(BaseModel ):
 
 # class SBLInstitutionTypeDto(SBLInstitutionTypeBase):
 #     name: str
-# 
+#
 #     class Config:
 #         from_attributes = True
 
