@@ -84,6 +84,16 @@ async def upsert_institution(session: AsyncSession, fi: FinancialInstitutionDto)
         db_fi = res.scalar_one_or_none()
         fi_data = fi.__dict__.copy()
         fi_data.pop("_sa_instance_state", None)
+
+        # Populate with model objects from SBLInstitutionTypeDao and clear out
+        # the id field since it's just a view
+        if "sbl_institution_type_ids" in fi_data:
+            sbl_type_ids = tuple(fi_data["sbl_institution_type_ids"])
+            sbl_type_stmt = select(SBLInstitutionTypeDao).filter(SBLInstitutionTypeDao.id.in_(sbl_type_ids))
+            sbl_types = await session.scalars(sbl_type_stmt)
+            fi_data["sbl_institution_types"] = sbl_types.all()
+            del fi_data["sbl_institution_type_ids"]
+
         if db_fi is None:
             db_fi = FinancialInstitutionDao(**fi_data)
             session.add(db_fi)

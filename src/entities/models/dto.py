@@ -29,7 +29,7 @@ class FinancialInstitutionDto(FinancialInstitutionBase):
     rssd_id: int | None = None
     primary_federal_regulator_id: str | None = None
     hmda_institution_type_id: str | None = None
-    sbl_institution_type_id: str | None = None
+    sbl_institution_type_ids: List[str] = []
     hq_address_street_1: str
     hq_address_street_2: str | None = None
     hq_address_city: str
