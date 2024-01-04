@@ -4,7 +4,7 @@
 
 | Name                                     |    Stmts |     Miss |   Branch |   BrPart |   Cover |   Missing |
 |----------------------------------------- | -------: | -------: | -------: | -------: | ------: | --------: |
-| src/config.py                            |       44 |        0 |       10 |        1 |     98% |    13->17 |
+| src/config.py                            |       44 |        0 |       10 |        1 |     98% |    14->18 |
 | src/dependencies.py                      |       24 |        2 |       10 |        2 |     82% |    35, 43 |
 | src/entities/engine/\_\_init\_\_.py      |        2 |        0 |        0 |        0 |    100% |           |
 | src/entities/engine/engine.py            |       10 |        0 |        0 |        0 |    100% |           |
