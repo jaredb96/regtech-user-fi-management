@@ -1,8 +1,7 @@
+from typing import Any, List, Dict
 from alembic import op
-from sqlalchemy import engine_from_config
+from sqlalchemy import MetaData, Table, engine_from_config
 import sqlalchemy
-from csv import DictReader
-import os
 
 
 def table_exists(table_name):
@@ -15,12 +14,12 @@ def table_exists(table_name):
     return table_name in tables
 
 
-def get_feed_data_from_file(table_name):
-    file_dir = os.path.dirname(os.path.realpath(__file__))
-    data_file_path = f"{file_dir}/feed/%s.csv" % table_name
-    data_file = open(data_file_path, "r")
-    reader = DictReader(data_file, delimiter="|")
-    output_list = list()
-    for dictionary in reader:
-        output_list.append(dictionary)
-    return output_list
+def get_table_by_name(table_name):
+    meta = MetaData()
+    meta.reflect(op.get_bind())
+    table = Table(table_name, meta)
+    return table
+
+
+def get_indices_from_collection(data: List[Dict[Any, Any]], key: str) -> List[Any]:
+    return [e[key] for e in data]
