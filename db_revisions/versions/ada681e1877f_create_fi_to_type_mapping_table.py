@@ -27,16 +27,10 @@ def upgrade() -> None:
             sa.Column("type_id", sa.String(), sa.ForeignKey("sbl_institution_type.id"), primary_key=True),
         )
         with op.batch_alter_table("financial_institutions") as batch_op:
-            batch_op.drop_constraint(
-                "fk_sbl_institution_type_financial_institutions",
-                type_="foreignkey"
-            )
-            batch_op.drop_index(
-                op.f("ix_financial_institutions_sbl_institution_type_id")
-            )
-            batch_op.drop_column(
-                "sbl_institution_type_id"
-            )
+            batch_op.drop_constraint("fk_sbl_institution_type_financial_institutions", type_="foreignkey")
+            batch_op.drop_index(op.f("ix_financial_institutions_sbl_institution_type_id"))
+            batch_op.drop_column("sbl_institution_type_id")
+
 
 def downgrade() -> None:
     op.drop_table("fi_to_type_mapping")
