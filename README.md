@@ -9,19 +9,20 @@
 | src/entities/engine/\_\_init\_\_.py      |        2 |        0 |        0 |        0 |    100% |           |
 | src/entities/engine/engine.py            |       10 |        0 |        0 |        0 |    100% |           |
 | src/entities/models/\_\_init\_\_.py      |        3 |        0 |        0 |        0 |    100% |           |
-| src/entities/models/dao.py               |       60 |        0 |        0 |        0 |    100% |           |
-| src/entities/models/dto.py               |       94 |        0 |       10 |        0 |    100% |           |
-| src/entities/repos/institutions\_repo.py |       45 |        1 |       22 |        1 |     97% |        86 |
+| src/entities/models/dao.py               |       59 |        0 |        0 |        0 |    100% |           |
+| src/entities/models/dto.py               |       87 |        0 |       10 |        0 |    100% |           |
+| src/entities/repos/institutions\_repo.py |       54 |        1 |       22 |        1 |     97% |       108 |
+| src/entities/repos/repo\_utils.py        |        9 |        0 |        2 |        0 |    100% |           |
 | src/main.py                              |       35 |        7 |        6 |        0 |     83% |25-29, 40-41 |
 | src/oauth2/\_\_init\_\_.py               |        3 |        0 |        0 |        0 |    100% |           |
 | src/oauth2/oauth2\_admin.py              |       61 |       38 |        8 |        0 |     33% |28-37, 40-43, 46-50, 53-63, 66-69, 72-76, 79-83, 89-90 |
 | src/oauth2/oauth2\_backend.py            |       30 |       16 |        4 |        0 |     41% |25-37, 40-46 |
 | src/routers/\_\_init\_\_.py              |        3 |        0 |        0 |        0 |    100% |           |
 | src/routers/admin.py                     |       24 |        0 |       20 |        0 |    100% |           |
-| src/routers/institutions.py              |       45 |        0 |       36 |        0 |    100% |           |
+| src/routers/institutions.py              |       62 |        0 |       58 |        1 |     99% |  77->exit |
 | src/util/\_\_init\_\_.py                 |        2 |        0 |        0 |        0 |    100% |           |
 | src/util/router\_wrapper.py              |       13 |        0 |        2 |        0 |    100% |           |
-|                                **TOTAL** |  **498** |   **64** |  **128** |    **4** | **87%** |           |
+|                                **TOTAL** |  **525** |   **64** |  **152** |    **5** | **88%** |           |
 
 3 empty files skipped.
 
