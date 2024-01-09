@@ -53,7 +53,6 @@ class TestInstitutionsRepo:
                 rssd_id=1234,
                 primary_federal_regulator_id="FRI1",
                 hmda_institution_type_id="HIT1",
-                # sbl_institution_type_ids=["SIT1"],
                 sbl_institution_types=[sbl_it_dao_sit1],
                 hq_address_street_1="Test Address Street 1",
                 hq_address_street_2="",
@@ -76,7 +75,6 @@ class TestInstitutionsRepo:
                 rssd_id=4321,
                 primary_federal_regulator_id="FRI2",
                 hmda_institution_type_id="HIT2",
-                # sbl_institution_type_ids=["SIT2"],
                 sbl_institution_types=[sbl_it_dao_sit2],
                 hq_address_street_1="Test Address Street 2",
                 hq_address_street_2="",
@@ -99,7 +97,6 @@ class TestInstitutionsRepo:
                 rssd_id=2134,
                 primary_federal_regulator_id="FRI3",
                 hmda_institution_type_id="HIT3",
-                # sbl_institution_type_ids=["SIT3"],
                 sbl_institution_types=[sbl_it_dao_sit3],
                 hq_address_street_1="Test Address Street 3",
                 hq_address_street_2="",
@@ -192,7 +189,7 @@ class TestInstitutionsRepo:
         assert len(res) == 0
 
     async def test_add_institution(self, transaction_session: AsyncSession):
-        await repo.upsert_institution(
+        db_fi = await repo.upsert_institution(
             transaction_session,
             FinancialInstitutionDto(
                 name="New Bank 123",
@@ -203,7 +200,6 @@ class TestInstitutionsRepo:
                 primary_federal_regulator_id="FRI3",
                 hmda_institution_type_id="HIT3",
                 sbl_institution_type_ids=["SIT3"],
-                # sbl_institution_types=[SBLInstitutionTypeDao(id="SIT3", name="Test SBL Instituion ID 3")],
                 hq_address_street_1="Test Address Street 3",
                 hq_address_street_2="",
                 hq_address_city="Test City 3",
@@ -217,6 +213,7 @@ class TestInstitutionsRepo:
                 top_holder_rssd_id=876543,
             ),
         )
+        assert db_fi.domains == []
         res = await repo.get_institutions(transaction_session)
         assert len(res) == 4
         new_sbl_types = next(iter([fi for fi in res if fi.lei == "NEWBANK123"])).sbl_institution_types
