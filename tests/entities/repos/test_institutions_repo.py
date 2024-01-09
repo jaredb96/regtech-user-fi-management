@@ -192,7 +192,7 @@ class TestInstitutionsRepo:
         assert len(res) == 0
 
     async def test_add_institution(self, transaction_session: AsyncSession):
-        await repo.upsert_institution(
+        db_fi = await repo.upsert_institution(
             transaction_session,
             FinancialInstitutionDto(
                 name="New Bank 123",
@@ -217,6 +217,7 @@ class TestInstitutionsRepo:
                 top_holder_rssd_id=876543,
             ),
         )
+        assert db_fi.domains == []
         res = await repo.get_institutions(transaction_session)
         assert len(res) == 4
         new_sbl_types = next(iter([fi for fi in res if fi.lei == "NEWBANK123"])).sbl_institution_types
