@@ -95,7 +95,7 @@ class AddressStateDto(AddressStateBase):
 class FinancialInstitutionWithRelationsDto(FinancialInstitutionDto):
     primary_federal_regulator: FederalRegulatorDto | None = None
     hmda_institution_type: InstitutionTypeDto | None = None
-    sbl_institution_type: InstitutionTypeDto | None = None
+    sbl_institution_types: List[InstitutionTypeDto] = []
     hq_address_state: AddressStateDto
     domains: List[FinancialInsitutionDomainDto] = []
 
