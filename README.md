@@ -11,7 +11,7 @@
 | src/entities/models/\_\_init\_\_.py      |        3 |        0 |        0 |        0 |    100% |           |
 | src/entities/models/dao.py               |       64 |        0 |        0 |        0 |    100% |           |
 | src/entities/models/dto.py               |      105 |        0 |       16 |        1 |     99% |    41->43 |
-| src/entities/repos/institutions\_repo.py |       49 |        1 |       22 |        1 |     97% |       110 |
+| src/entities/repos/institutions\_repo.py |       51 |        1 |       22 |        1 |     97% |       112 |
 | src/entities/repos/repo\_utils.py        |        9 |        0 |        2 |        0 |    100% |           |
 | src/main.py                              |       35 |        7 |        6 |        0 |     83% |25-29, 40-41 |
 | src/oauth2/\_\_init\_\_.py               |        3 |        0 |        0 |        0 |    100% |           |
@@ -22,7 +22,7 @@
 | src/routers/institutions.py              |       62 |        0 |       58 |        1 |     99% |  77->exit |
 | src/util/\_\_init\_\_.py                 |        2 |        0 |        0 |        0 |    100% |           |
 | src/util/router\_wrapper.py              |       13 |        0 |        2 |        0 |    100% |           |
-|                                **TOTAL** |  **543** |   **64** |  **158** |    **6** | **88%** |           |
+|                                **TOTAL** |  **545** |   **64** |  **158** |    **6** | **88%** |           |
 
 3 empty files skipped.
 
