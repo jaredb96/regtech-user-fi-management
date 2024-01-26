@@ -4,27 +4,22 @@
 
 | Name                                     |    Stmts |     Miss |   Branch |   BrPart |   Cover |   Missing |
 |----------------------------------------- | -------: | -------: | -------: | -------: | ------: | --------: |
-| src/config.py                            |       44 |        0 |       10 |        1 |     98% |    14->18 |
+| src/config.py                            |       29 |        0 |        8 |        1 |     97% |    15->19 |
 | src/dependencies.py                      |       24 |        2 |       10 |        2 |     82% |    35, 43 |
 | src/entities/engine/\_\_init\_\_.py      |        2 |        0 |        0 |        0 |    100% |           |
 | src/entities/engine/engine.py            |       10 |        0 |        0 |        0 |    100% |           |
 | src/entities/models/\_\_init\_\_.py      |        3 |        0 |        0 |        0 |    100% |           |
 | src/entities/models/dao.py               |       64 |        0 |        0 |        0 |    100% |           |
-| src/entities/models/dto.py               |      105 |        0 |       16 |        1 |     99% |    41->43 |
+| src/entities/models/dto.py               |       86 |        0 |        6 |        1 |     99% |    40->42 |
 | src/entities/repos/institutions\_repo.py |       51 |        1 |       22 |        1 |     97% |       112 |
 | src/entities/repos/repo\_utils.py        |        9 |        0 |        2 |        0 |    100% |           |
-| src/main.py                              |       35 |        7 |        6 |        0 |     83% |25-29, 40-41 |
-| src/oauth2/\_\_init\_\_.py               |        3 |        0 |        0 |        0 |    100% |           |
-| src/oauth2/oauth2\_admin.py              |       61 |       38 |        8 |        0 |     33% |28-37, 40-43, 46-50, 53-63, 66-69, 72-76, 79-83, 89-90 |
-| src/oauth2/oauth2\_backend.py            |       30 |       16 |        4 |        0 |     41% |25-37, 40-46 |
+| src/main.py                              |       43 |       12 |        6 |        0 |     76% |24-28, 33-37, 51-52 |
 | src/routers/\_\_init\_\_.py              |        3 |        0 |        0 |        0 |    100% |           |
-| src/routers/admin.py                     |       24 |        0 |       20 |        0 |    100% |           |
-| src/routers/institutions.py              |       62 |        0 |       58 |        1 |     99% |  77->exit |
-| src/util/\_\_init\_\_.py                 |        2 |        0 |        0 |        0 |    100% |           |
-| src/util/router\_wrapper.py              |       13 |        0 |        2 |        0 |    100% |           |
-|                                **TOTAL** |  **545** |   **64** |  **158** |    **6** | **88%** |           |
+| src/routers/admin.py                     |       26 |        0 |       20 |        0 |    100% |           |
+| src/routers/institutions.py              |       65 |        0 |       58 |        1 |     99% |  80->exit |
+|                                **TOTAL** |  **415** |   **15** |  **132** |    **6** | **96%** |           |
 
-3 empty files skipped.
+4 empty files skipped.
 
 
 ## Setup coverage badge
