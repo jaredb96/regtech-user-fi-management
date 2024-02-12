@@ -67,7 +67,7 @@
             <a id="nextFileLink" class="nav" href="index.html">&#xbb; next</a>
             &nbsp; &nbsp; &nbsp;
             <a class="nav" href="https://coverage.readthedocs.io/en/7.4.1">coverage.py v7.4.1</a>,
-            created at 2024-02-07 17:21 +0000
+            created at 2024-02-12 14:52 +0000
         </p>
         <aside class="hidden">
             <button type="button" class="button_next_chunk" data-shortcut="j"/>
@@ -135,7 +135,7 @@
     <p class="pln"><span class="n"><a id="t51" href="#t51">51</a></span><span class="t">    <span class="nam">request</span><span class="op">:</span> <span class="nam">Request</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t52" href="#t52">52</a></span><span class="t">    <span class="nam">fi</span><span class="op">:</span> <span class="nam">FinancialInstitutionDto</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t53" href="#t53">53</a></span><span class="t"><span class="op">)</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
-    <p class="run"><span class="n"><a id="t54" href="#t54">54</a></span><span class="t">    <span class="nam">db_fi</span> <span class="op">=</span> <span class="key">await</span> <span class="nam">repo</span><span class="op">.</span><span class="nam">upsert_institution</span><span class="op">(</span><span class="nam">request</span><span class="op">.</span><span class="nam">state</span><span class="op">.</span><span class="nam">db_session</span><span class="op">,</span> <span class="nam">fi</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
+    <p class="run"><span class="n"><a id="t54" href="#t54">54</a></span><span class="t">    <span class="nam">db_fi</span> <span class="op">=</span> <span class="key">await</span> <span class="nam">repo</span><span class="op">.</span><span class="nam">upsert_institution</span><span class="op">(</span><span class="nam">request</span><span class="op">.</span><span class="nam">state</span><span class="op">.</span><span class="nam">db_session</span><span class="op">,</span> <span class="nam">fi</span><span class="op">,</span> <span class="nam">request</span><span class="op">.</span><span class="nam">user</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
     <p class="run"><span class="n"><a id="t55" href="#t55">55</a></span><span class="t">    <span class="nam">kc_id</span> <span class="op">=</span> <span class="nam">oauth2_admin</span><span class="op">.</span><span class="nam">upsert_group</span><span class="op">(</span><span class="nam">fi</span><span class="op">.</span><span class="nam">lei</span><span class="op">,</span> <span class="nam">fi</span><span class="op">.</span><span class="nam">name</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
     <p class="run"><span class="n"><a id="t56" href="#t56">56</a></span><span class="t">    <span class="key">return</span> <span class="nam">kc_id</span><span class="op">,</span> <span class="nam">db_fi</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t57" href="#t57">57</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
@@ -211,7 +211,7 @@
             <a id="nextFileLink" class="nav" href="index.html">&#xbb; next</a>
             &nbsp; &nbsp; &nbsp;
             <a class="nav" href="https://coverage.readthedocs.io/en/7.4.1">coverage.py v7.4.1</a>,
-            created at 2024-02-07 17:21 +0000
+            created at 2024-02-12 14:52 +0000
         </p>
     </div>
 </footer>

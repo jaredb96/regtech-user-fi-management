@@ -8,16 +8,17 @@
 | src/dependencies.py                      |       24 |        2 |       10 |        2 |     82% |    35, 43 |
 | src/entities/engine/\_\_init\_\_.py      |        2 |        0 |        0 |        0 |    100% |           |
 | src/entities/engine/engine.py            |       10 |        0 |        0 |        0 |    100% |           |
+| src/entities/listeners.py                |       41 |        9 |       26 |        3 |     70% |20, 22-24, 27->exit, 46-57 |
 | src/entities/models/\_\_init\_\_.py      |        3 |        0 |        0 |        0 |    100% |           |
-| src/entities/models/dao.py               |       64 |        0 |        0 |        0 |    100% |           |
-| src/entities/models/dto.py               |       86 |        0 |        6 |        1 |     99% |    40->42 |
-| src/entities/repos/institutions\_repo.py |       51 |        1 |       22 |        1 |     97% |       112 |
+| src/entities/models/dao.py               |       74 |        0 |        2 |        0 |    100% |           |
+| src/entities/models/dto.py               |       87 |        0 |        6 |        1 |     99% |    40->42 |
+| src/entities/repos/institutions\_repo.py |       53 |        1 |       22 |        2 |     96% |81->90, 117 |
 | src/entities/repos/repo\_utils.py        |        9 |        0 |        2 |        0 |    100% |           |
-| src/main.py                              |       43 |       12 |        6 |        0 |     76% |24-28, 33-37, 51-52 |
+| src/main.py                              |       45 |       13 |        6 |        0 |     75% |25-29, 34-39, 53-54 |
 | src/routers/\_\_init\_\_.py              |        3 |        0 |        0 |        0 |    100% |           |
 | src/routers/admin.py                     |       26 |        0 |       20 |        0 |    100% |           |
 | src/routers/institutions.py              |       65 |        0 |       58 |        1 |     99% |  80->exit |
-|                                **TOTAL** |  **415** |   **15** |  **132** |    **6** | **96%** |           |
+|                                **TOTAL** |  **471** |   **25** |  **160** |   **10** | **93%** |           |
 
 4 empty files skipped.
 
