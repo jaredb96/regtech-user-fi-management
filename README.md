@@ -8,7 +8,7 @@
 | src/dependencies.py                      |       24 |        2 |       10 |        2 |     82% |    35, 43 |
 | src/entities/engine/\_\_init\_\_.py      |        2 |        0 |        0 |        0 |    100% |           |
 | src/entities/engine/engine.py            |       10 |        0 |        0 |        0 |    100% |           |
-| src/entities/listeners.py                |       41 |        9 |       26 |        3 |     70% |20, 22-24, 27->exit, 46-57 |
+| src/entities/listeners.py                |       54 |        5 |       34 |        6 |     83% |18->13, 19->exit, 20->exit, 26->13, 40->33, 51->exit, 70-81 |
 | src/entities/models/\_\_init\_\_.py      |        3 |        0 |        0 |        0 |    100% |           |
 | src/entities/models/dao.py               |       74 |        0 |        2 |        0 |    100% |           |
 | src/entities/models/dto.py               |       87 |        0 |        6 |        1 |     99% |    40->42 |
@@ -18,7 +18,7 @@
 | src/routers/\_\_init\_\_.py              |        3 |        0 |        0 |        0 |    100% |           |
 | src/routers/admin.py                     |       26 |        0 |       20 |        0 |    100% |           |
 | src/routers/institutions.py              |       65 |        0 |       58 |        1 |     99% |  80->exit |
-|                                **TOTAL** |  **471** |   **25** |  **160** |   **10** | **93%** |           |
+|                                **TOTAL** |  **484** |   **21** |  **168** |   **13** | **94%** |           |
 
 4 empty files skipped.
 
