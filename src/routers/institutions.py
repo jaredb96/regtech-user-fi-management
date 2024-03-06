@@ -108,9 +108,20 @@ async def get_institution(
     return res
 
 
-@router.patch("/{lei}/types/{type}", response_model=VersionedData[List[SblTypeAssociationDetailsDto]] | None)
+@router.get("/{lei}/types/{type}", response_model=VersionedData[List[SblTypeAssociationDetailsDto]] | None)
 @requires("authenticated")
-async def update_sbl_types(request: Request, lei: str, type: InstitutionType, types_patch: SblTypeAssociationPatchDto):
+async def get_types(request: Request, lei: str, type: InstitutionType):
+    match type:
+        case "sbl":
+            fi = await repo.get_institution(request.state.db_session, lei)
+            return VersionedData(version=fi.version, data=fi.sbl_institution_types) if fi else None
+        case "hmda":
+            raise HTTPException(status_code=HTTPStatus.NOT_IMPLEMENTED, detail="HMDA type not yet supported")
+
+
+@router.put("/{lei}/types/{type}", response_model=VersionedData[List[SblTypeAssociationDetailsDto]] | None)
+@requires("authenticated")
+async def update_types(request: Request, lei: str, type: InstitutionType, types_patch: SblTypeAssociationPatchDto):
     match type:
         case "sbl":
             fi = await repo.update_sbl_types(
