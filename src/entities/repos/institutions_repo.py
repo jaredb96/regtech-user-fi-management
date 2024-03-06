@@ -91,8 +91,7 @@ async def upsert_institution(
 async def update_sbl_types(
     session: AsyncSession, user: AuthenticatedUser, lei: str, sbl_types: Sequence[SblTypeAssociationDto | str]
 ) -> FinancialInstitutionDao | None:
-    fi = await get_institution(session, lei)
-    if fi:
+    if fi := await get_institution(session, lei):
         new_types = set(get_associated_sbl_types(lei, user.id, sbl_types))
         old_types = set(fi.sbl_institution_types)
         add_types = new_types.difference(old_types)
@@ -108,7 +107,7 @@ async def update_sbl_types(
         """
         for type in fi.sbl_institution_types:
             await type.awaitable_attrs.sbl_type
-    return fi
+        return fi
 
 
 async def add_domains(

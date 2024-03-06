@@ -466,6 +466,14 @@ class TestInstitutionsApi:
         assert result["version"] == inst_version
         assert result["data"][0] == {"sbl_type": {"id": "SIT1", "name": "SIT1"}, "details": None}
 
+    def test_get_sbl_types_no_institution(self, mocker: MockerFixture, app_fixture: FastAPI, authed_user_mock: Mock):
+        get_institution_mock = mocker.patch("entities.repos.institutions_repo.get_institution")
+        get_institution_mock.return_value = None
+        client = TestClient(app_fixture)
+        test_lei = "TESTBANK123"
+        res = client.get(f"/v1/institutions/{test_lei}/types/sbl")
+        assert res.status_code == HTTPStatus.NO_CONTENT
+
     def test_get_hmda_types(self, mocker: MockerFixture, app_fixture: FastAPI, authed_user_mock: Mock):
         client = TestClient(app_fixture)
         test_lei = "TESTBANK123"
@@ -484,6 +492,17 @@ class TestInstitutionsApi:
         mock.assert_called_once_with(
             ANY, ANY, test_lei, ["1", SblTypeAssociationDto(id="2"), SblTypeAssociationDto(id="13", details="test")]
         )
+    
+    def test_update_non_existing_institution_types(self, mocker: MockerFixture, app_fixture: FastAPI, authed_user_mock: Mock):
+        get_institution_mock = mocker.patch("entities.repos.institutions_repo.get_institution")
+        get_institution_mock.return_value = None
+        client = TestClient(app_fixture)
+        test_lei = "TESTBANK123"
+        res = client.put(
+            f"/v1/institutions/{test_lei}/types/sbl",
+            json={"sbl_institution_types": ["1", {"id": "2"}, {"id": "13", "details": "test"}]},
+        )
+        assert res.status_code == HTTPStatus.NO_CONTENT
 
     def test_update_unsupported_institution_types(
         self, mocker: MockerFixture, app_fixture: FastAPI, authed_user_mock: Mock
