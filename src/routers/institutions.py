@@ -123,7 +123,9 @@ async def get_types(request: Request, response: Response, lei: str, type: Instit
 
 @router.put("/{lei}/types/{type}", response_model=VersionedData[List[SblTypeAssociationDetailsDto]] | None)
 @requires("authenticated")
-async def update_types(request: Request, response: Response, lei: str, type: InstitutionType, types_patch: SblTypeAssociationPatchDto):
+async def update_types(
+    request: Request, response: Response, lei: str, type: InstitutionType, types_patch: SblTypeAssociationPatchDto
+):
     match type:
         case "sbl":
             if fi := await repo.update_sbl_types(

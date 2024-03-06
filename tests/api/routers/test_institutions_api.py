@@ -492,8 +492,10 @@ class TestInstitutionsApi:
         mock.assert_called_once_with(
             ANY, ANY, test_lei, ["1", SblTypeAssociationDto(id="2"), SblTypeAssociationDto(id="13", details="test")]
         )
-    
-    def test_update_non_existing_institution_types(self, mocker: MockerFixture, app_fixture: FastAPI, authed_user_mock: Mock):
+
+    def test_update_non_existing_institution_types(
+        self, mocker: MockerFixture, app_fixture: FastAPI, authed_user_mock: Mock
+    ):
         get_institution_mock = mocker.patch("entities.repos.institutions_repo.get_institution")
         get_institution_mock.return_value = None
         client = TestClient(app_fixture)
