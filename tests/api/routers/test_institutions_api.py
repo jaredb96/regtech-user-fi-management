@@ -1,3 +1,4 @@
+from http import HTTPStatus
 from unittest.mock import Mock, ANY
 
 from fastapi import FastAPI
@@ -13,6 +14,7 @@ from entities.models import (
     HMDAInstitutionTypeDao,
     SBLInstitutionTypeDao,
     SblTypeMappingDao,
+    SblTypeAssociationDto,
 )
 
 
@@ -425,3 +427,40 @@ class TestInstitutionsApi:
         client = TestClient(app_fixture)
         res = client.get("/v1/institutions/regulators")
         assert res.status_code == 200
+
+    def test_update_institution_types(self, mocker: MockerFixture, app_fixture: FastAPI, authed_user_mock: Mock):
+        mock = mocker.patch("entities.repos.institutions_repo.update_sbl_types")
+        client = TestClient(app_fixture)
+        test_lei = "TESTBANK123"
+        res = client.patch(
+            f"/v1/institutions/{test_lei}/types/sbl",
+            json={"sbl_institution_types": ["1", {"id": "2"}, {"id": "13", "details": "test"}]},
+        )
+        assert res.status_code == HTTPStatus.OK
+        mock.assert_called_once_with(
+            ANY, ANY, test_lei, ["1", SblTypeAssociationDto(id="2"), SblTypeAssociationDto(id="13", details="test")]
+        )
+
+    def test_update_unsupported_institution_types(
+        self, mocker: MockerFixture, app_fixture: FastAPI, authed_user_mock: Mock
+    ):
+        mock = mocker.patch("entities.repos.institutions_repo.update_sbl_types")
+        client = TestClient(app_fixture)
+        test_lei = "TESTBANK123"
+        res = client.patch(
+            f"/v1/institutions/{test_lei}/types/hmda",
+            json={"sbl_institution_types": ["1", {"id": "2"}, {"id": "13", "details": "test"}]},
+        )
+        assert res.status_code == HTTPStatus.NOT_IMPLEMENTED
+        mock.assert_not_called()
+
+    def test_update_wrong_institution_types(self, mocker: MockerFixture, app_fixture: FastAPI, authed_user_mock: Mock):
+        mock = mocker.patch("entities.repos.institutions_repo.update_sbl_types")
+        client = TestClient(app_fixture)
+        test_lei = "TESTBANK123"
+        res = client.patch(
+            f"/v1/institutions/{test_lei}/types/test",
+            json={"sbl_institution_types": ["1", {"id": "2"}, {"id": "13", "details": "test"}]},
+        )
+        assert res.status_code == HTTPStatus.UNPROCESSABLE_ENTITY
+        mock.assert_not_called()

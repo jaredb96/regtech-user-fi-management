@@ -16,6 +16,9 @@ from entities.models import (
     InstitutionTypeDto,
     AddressStateDto,
     FederalRegulatorDto,
+    SblTypeAssociationDetailsDto,
+    SblTypeAssociationPatchDto,
+    VersionedData,
 )
 from sqlalchemy.ext.asyncio import AsyncSession
 from starlette.authentication import requires
@@ -103,6 +106,19 @@ async def get_institution(
     if not res:
         raise HTTPException(HTTPStatus.NOT_FOUND, f"{lei} not found.")
     return res
+
+
+@router.patch("/{lei}/types/{type}", response_model=VersionedData[List[SblTypeAssociationDetailsDto]] | None)
+@requires("authenticated")
+async def update_sbl_types(request: Request, lei: str, type: InstitutionType, types_patch: SblTypeAssociationPatchDto):
+    match type:
+        case "sbl":
+            fi = await repo.update_sbl_types(
+                request.state.db_session, request.user, lei, types_patch.sbl_institution_types
+            )
+            return VersionedData(version=fi.version, data=fi.sbl_institution_types) if fi else None
+        case "hmda":
+            raise HTTPException(status_code=HTTPStatus.NOT_IMPLEMENTED, detail="HMDA type not yet supported")
 
 
 @router.post("/{lei}/domains/", response_model=List[FinancialInsitutionDomainDto], dependencies=[Depends(check_domain)])
