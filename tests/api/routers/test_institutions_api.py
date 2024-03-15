@@ -97,7 +97,8 @@ class TestInstitutionsApi:
         )
         assert (
             res.json()["detail"][0]["msg"]
-            == "Value error, Invalid lei test_Lei. FinancialInstitution lei can only contain letters and numbers."
+            == "Value error, Invalid lei test_Lei. FinancialInstitution lei must be 20 characaters long and contain "
+            "only letters and numbers."
         )
         assert res.status_code == 422
 

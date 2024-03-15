@@ -90,7 +90,8 @@ class FinancialInstitutionDto(FinancialInstitutionBase):
             match = re.match(r"^([a-zA-Z0-9]{20})", self.lei)
             if not match:
                 raise ValueError(
-                    f"Invalid lei {self.lei}. FinancialInstitution lei can only contain letters and numbers."
+                    f"Invalid lei {self.lei}. FinancialInstitution lei must be 20 characaters long and contain only "
+                    "letters and numbers."
                 )
         return self
 
