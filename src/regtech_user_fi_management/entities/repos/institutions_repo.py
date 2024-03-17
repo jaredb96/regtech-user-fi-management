@@ -8,16 +8,19 @@ from regtech_api_commons.models import AuthenticatedUser
 
 from .repo_utils import get_associated_sbl_types, query_type
 
-from entities.models import (
+from regtech_user_fi_management.entities.models.dao import (
     FinancialInstitutionDao,
     FinancialInstitutionDomainDao,
-    FinancialInstitutionDto,
-    FinancialInsitutionDomainCreate,
     HMDAInstitutionTypeDao,
     SBLInstitutionTypeDao,
     DeniedDomainDao,
     AddressStateDao,
     FederalRegulatorDao,
+)
+
+from regtech_user_fi_management.entities.models.dto import (
+    FinancialInstitutionDto,
+    FinancialInsitutionDomainCreate,
     SblTypeAssociationDto,
 )
 
