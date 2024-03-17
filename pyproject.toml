@@ -2,12 +2,12 @@
 name = "regtech-user-fi-management"
 version = "0.1.0"
 description = ""
-authors = ["lchen-2101 <73617864+lchen-2101@users.noreply.github.com>"]
+authors = ["CFPB's RegTech Team"]
 readme = "README.md"
-packages = [{ include = "regtech-user-fi-management" }]
+packages = [{ include = "regtech_user_fi_management", from = "src" }]
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.12"
 fastapi = "^0.109.1"
 uvicorn = "^0.22.0"
 python-dotenv = "^1.0.0"
