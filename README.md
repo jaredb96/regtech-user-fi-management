@@ -4,8 +4,8 @@
 
 | Name                                     |    Stmts |     Miss |   Branch |   BrPart |   Cover |   Missing |
 |----------------------------------------- | -------: | -------: | -------: | -------: | ------: | --------: |
-| src/config.py                            |       29 |        0 |        8 |        1 |     97% |    15->19 |
-| src/dependencies.py                      |       24 |        2 |        8 |        2 |     88% |    35, 43 |
+| src/config.py                            |       30 |        0 |        8 |        1 |     97% |    15->19 |
+| src/dependencies.py                      |       62 |        2 |       26 |        3 |     94% |39, 47, 93->95 |
 | src/entities/engine/\_\_init\_\_.py      |        2 |        0 |        0 |        0 |    100% |           |
 | src/entities/engine/engine.py            |       10 |        0 |        0 |        0 |    100% |           |
 | src/entities/listeners.py                |       54 |        5 |       26 |        4 |     84% |18->13, 26->13, 40->33, 51->exit, 70-81 |
@@ -17,8 +17,8 @@
 | src/main.py                              |       45 |       13 |        6 |        0 |     75% |25-29, 34-39, 53-54 |
 | src/routers/\_\_init\_\_.py              |        3 |        0 |        0 |        0 |    100% |           |
 | src/routers/admin.py                     |       26 |        0 |       20 |        0 |    100% |           |
-| src/routers/institutions.py              |       85 |        0 |       80 |        3 |     98% |83->exit, 120->exit, 137->exit |
-|                                **TOTAL** |  **545** |   **21** |  **194** |   **13** | **95%** |           |
+| src/routers/institutions.py              |       89 |        0 |       88 |        3 |     98% |84->exit, 123->exit, 141->exit |
+|                                **TOTAL** |  **588** |   **21** |  **220** |   **14** | **95%** |           |
 
 4 empty files skipped.
 
