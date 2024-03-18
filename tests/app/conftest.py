@@ -13,7 +13,7 @@ def setup(mocker: MockerFixture):
     MockedEngine = mocker.patch("sqlalchemy.ext.asyncio.AsyncEngine")
     mocked_engine.return_value = MockedEngine.return_value
     mocker.patch("fastapi.security.OAuth2AuthorizationCodeBearer")
-    mocker.patch("entities.engine.get_session")
+    mocker.patch("regtech_user_fi_management.entities.engine.engine.get_session")
 
 
 @pytest.fixture

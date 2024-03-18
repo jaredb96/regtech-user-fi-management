@@ -12,7 +12,7 @@ RUN poetry install --no-root
 COPY ./src ./src
 COPY ./db_revisions ./db_revisions
 
-WORKDIR /usr/app/src
+WORKDIR /usr/app/src/regtech_user_fi_management
 
 EXPOSE 8888
 

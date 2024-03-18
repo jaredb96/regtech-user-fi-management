@@ -3,7 +3,7 @@ from sqlalchemy import Connection, Table, event, inspect
 from sqlalchemy.orm import Mapper
 
 from .models.dao import Base, FinancialInstitutionDao, SblTypeMappingDao
-from entities.engine.engine import engine
+from .engine.engine import engine
 
 
 def inspect_fi(fi: FinancialInstitutionDao):

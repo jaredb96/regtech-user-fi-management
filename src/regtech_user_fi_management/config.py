@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+from typing import Set
 from urllib import parse
 
 from pydantic import field_validator, PostgresDsn, ValidationInfo
@@ -10,7 +11,7 @@ from regtech_api_commons.oauth2.config import KeycloakSettings
 
 JWT_OPTS_PREFIX = "jwt_opts_"
 
-env_files_to_load: list[Path|str] = [".env"]
+env_files_to_load: list[Path | str] = [".env"]
 if os.getenv("ENV", "LOCAL") == "LOCAL":
     env_files_to_load.append(".env.local")
 
@@ -23,6 +24,7 @@ class Settings(BaseSettings):
     inst_db_host: str
     inst_db_scheme: str = "postgresql+asyncpg"
     inst_conn: str | None = None
+    admin_scopes: Set[str] = set(["query-groups", "manage-users"])
 
     def __init__(self, **data):
         super().__init__(**data)
