@@ -7,6 +7,7 @@ from fastapi.types import DecoratedCallable
 from sqlalchemy.ext.asyncio import AsyncSession
 from typing import List, Optional
 from itertools import chain
+from config import settings
 
 from entities.engine import get_session
 from entities.repos import institutions_repo as repo
@@ -46,11 +47,8 @@ def get_email_domain(email: str) -> str:
     return None
 
 
-admin_scopes = set(["query-groups", "manage-users"])
-
-
 def is_admin(auth: AuthCredentials):
-    return admin_scopes.issubset(auth.scopes)
+    return settings.admin_scopes.issubset(auth.scopes)
 
 
 def lei_association_check(func: DecoratedCallable) -> DecoratedCallable:
