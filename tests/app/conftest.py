@@ -4,7 +4,7 @@ import pytest
 
 from pytest_mock import MockerFixture
 from starlette.authentication import AuthCredentials
-from regtech_api_commons.models import AuthenticatedUser, RegTechUser
+from regtech_api_commons.models.auth import AuthenticatedUser, RegTechUser
 
 
 @pytest.fixture(autouse=True)

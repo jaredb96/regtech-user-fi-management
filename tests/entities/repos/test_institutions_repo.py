@@ -18,7 +18,7 @@ from regtech_user_fi_management.entities.models.dao import (
     SblTypeMappingDao,
 )
 import regtech_user_fi_management.entities.repos.institutions_repo as repo
-from regtech_api_commons.models import AuthenticatedUser
+from regtech_api_commons.models.auth import AuthenticatedUser
 
 
 class TestInstitutionsRepo:

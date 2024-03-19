@@ -4,7 +4,7 @@ import pytest
 from fastapi import FastAPI
 from pytest_mock import MockerFixture
 from starlette.authentication import AuthCredentials, UnauthenticatedUser
-from regtech_api_commons.models import AuthenticatedUser
+from regtech_api_commons.models.auth import AuthenticatedUser
 from regtech_user_fi_management.entities.models.dao import (
     FinancialInstitutionDao,
     FinancialInstitutionDomainDao,
