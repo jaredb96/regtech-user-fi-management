@@ -2,25 +2,23 @@
 
 [Full report](https://htmlpreview.github.io/?https://github.com/cfpb/regtech-user-fi-management/blob/python-coverage-comment-action-data/htmlcov/index.html)
 
-| Name                                     |    Stmts |     Miss |   Branch |   BrPart |   Cover |   Missing |
-|----------------------------------------- | -------: | -------: | -------: | -------: | ------: | --------: |
-| src/config.py                            |       30 |        0 |        8 |        1 |     97% |    15->19 |
-| src/dependencies.py                      |       62 |        2 |       26 |        3 |     94% |39, 47, 93->95 |
-| src/entities/engine/\_\_init\_\_.py      |        2 |        0 |        0 |        0 |    100% |           |
-| src/entities/engine/engine.py            |       10 |        0 |        0 |        0 |    100% |           |
-| src/entities/listeners.py                |       54 |        5 |       26 |        4 |     84% |18->13, 26->13, 40->33, 51->exit, 70-81 |
-| src/entities/models/\_\_init\_\_.py      |        3 |        0 |        0 |        0 |    100% |           |
-| src/entities/models/dao.py               |       78 |        0 |        2 |        0 |    100% |           |
-| src/entities/models/dto.py               |      106 |        0 |       16 |        1 |     99% |    89->96 |
-| src/entities/repos/institutions\_repo.py |       68 |        1 |       26 |        2 |     97% |81->85, 134 |
-| src/entities/repos/repo\_utils.py        |       12 |        0 |        2 |        0 |    100% |           |
-| src/main.py                              |       45 |       13 |        6 |        0 |     75% |25-29, 34-39, 53-54 |
-| src/routers/\_\_init\_\_.py              |        3 |        0 |        0 |        0 |    100% |           |
-| src/routers/admin.py                     |       26 |        0 |       20 |        0 |    100% |           |
-| src/routers/institutions.py              |       89 |        0 |       88 |        3 |     98% |84->exit, 123->exit, 141->exit |
-|                                **TOTAL** |  **588** |   **21** |  **220** |   **14** | **95%** |           |
+| Name                                                                   |    Stmts |     Miss |   Branch |   BrPart |   Cover |   Missing |
+|----------------------------------------------------------------------- | -------: | -------: | -------: | -------: | ------: | --------: |
+| src/regtech\_user\_fi\_management/config.py                            |       30 |        0 |        8 |        1 |     97% |    15->19 |
+| src/regtech\_user\_fi\_management/dependencies.py                      |       62 |        2 |       26 |        3 |     94% |39, 47, 93->95 |
+| src/regtech\_user\_fi\_management/entities/engine/engine.py            |       10 |        0 |        0 |        0 |    100% |           |
+| src/regtech\_user\_fi\_management/entities/listeners.py                |       54 |        5 |       26 |        4 |     84% |18->13, 26->13, 40->33, 51->exit, 70-81 |
+| src/regtech\_user\_fi\_management/entities/models/dao.py               |       78 |        0 |        2 |        0 |    100% |           |
+| src/regtech\_user\_fi\_management/entities/models/dto.py               |      106 |        0 |       16 |        1 |     99% |    89->96 |
+| src/regtech\_user\_fi\_management/entities/repos/institutions\_repo.py |       69 |        1 |       26 |        2 |     97% |84->88, 137 |
+| src/regtech\_user\_fi\_management/entities/repos/repo\_utils.py        |       13 |        0 |        2 |        0 |    100% |           |
+| src/regtech\_user\_fi\_management/main.py                              |       45 |       13 |        6 |        0 |     75% |25-29, 34-39, 53-54 |
+| src/regtech\_user\_fi\_management/routers/\_\_init\_\_.py              |        3 |        0 |        0 |        0 |    100% |           |
+| src/regtech\_user\_fi\_management/routers/admin.py                     |       26 |        0 |       20 |        0 |    100% |           |
+| src/regtech\_user\_fi\_management/routers/institutions.py              |       89 |        0 |       88 |        3 |     98% |90->exit, 129->exit, 147->exit |
+|                                                              **TOTAL** |  **585** |   **21** |  **220** |   **14** | **95%** |           |
 
-4 empty files skipped.
+6 empty files skipped.
 
 
 ## Setup coverage badge
