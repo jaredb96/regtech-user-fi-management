@@ -1,4 +1,4 @@
-FROM python:3.11-alpine
+FROM python:3.12-alpine
 
 WORKDIR /usr/app
 
@@ -12,8 +12,8 @@ RUN poetry install --no-root
 COPY ./src ./src
 COPY ./db_revisions ./db_revisions
 
-WORKDIR /usr/app/src/regtech_user_fi_management
+WORKDIR /usr/app/src
 
 EXPOSE 8888
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8888"]
+CMD ["uvicorn", "regtech_user_fi_management.main:app", "--host", "0.0.0.0", "--port", "8888"]
