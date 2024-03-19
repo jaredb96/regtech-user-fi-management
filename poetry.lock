@@ -1255,7 +1255,7 @@ requests = "^2.31.0"
 type = "git"
 url = "https://github.com/cfpb/regtech-api-commons.git"
 reference = "HEAD"
-resolved_reference = "e65414c33af3bc8fa84af68deffdd9d41745d0dc"
+resolved_reference = "29356c630d2609cb81087ce35dd6c79512954d49"
 
 [[package]]
 name = "requests"
@@ -1507,4 +1507,4 @@ standard = ["colorama (>=0.4)", "httptools (>=0.5.0)", "python-dotenv (>=0.13)",
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.12,<4"
-content-hash = "9746ae6b352991413938db37bc3c35e51fcacd6b91650a377e1e5452742a03aa"
+content-hash = "80e17382fb2de14a85772e1e65c1c9147e75bbe7033cd6cf8e3be2b90726f0f3"

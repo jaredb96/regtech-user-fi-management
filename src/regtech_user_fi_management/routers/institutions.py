@@ -2,7 +2,7 @@ from fastapi import Depends, Request, HTTPException, Response
 from http import HTTPStatus
 from regtech_api_commons.oauth2.oauth2_admin import OAuth2Admin
 from regtech_user_fi_management.config import kc_settings
-from regtech_api_commons.api import Router
+from regtech_api_commons.api.router_wrapper import Router
 from regtech_user_fi_management.dependencies import (
     check_domain,
     parse_leis,
