@@ -4,7 +4,7 @@
 
 | Name                                                                   |    Stmts |     Miss |   Branch |   BrPart |   Cover |   Missing |
 |----------------------------------------------------------------------- | -------: | -------: | -------: | -------: | ------: | --------: |
-| src/regtech\_user\_fi\_management/config.py                            |       30 |        0 |        8 |        1 |     97% |    15->19 |
+| src/regtech\_user\_fi\_management/config.py                            |       31 |        0 |        8 |        1 |     97% |    15->19 |
 | src/regtech\_user\_fi\_management/dependencies.py                      |       62 |        2 |       26 |        3 |     94% |39, 47, 93->95 |
 | src/regtech\_user\_fi\_management/entities/engine/engine.py            |       10 |        0 |        0 |        0 |    100% |           |
 | src/regtech\_user\_fi\_management/entities/listeners.py                |       55 |        5 |       28 |        4 |     84% |18->13, 26->13, 40->33, 51->exit, 71-82 |
@@ -16,7 +16,7 @@
 | src/regtech\_user\_fi\_management/routers/\_\_init\_\_.py              |        3 |        0 |        0 |        0 |    100% |           |
 | src/regtech\_user\_fi\_management/routers/admin.py                     |       26 |        0 |       20 |        0 |    100% |           |
 | src/regtech\_user\_fi\_management/routers/institutions.py              |       89 |        0 |       88 |        3 |     98% |90->exit, 129->exit, 147->exit |
-|                                                              **TOTAL** |  **586** |   **21** |  **222** |   **14** | **95%** |           |
+|                                                              **TOTAL** |  **587** |   **21** |  **222** |   **14** | **95%** |           |
 
 6 empty files skipped.
 
