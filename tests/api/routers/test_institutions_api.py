@@ -86,7 +86,7 @@ class TestInstitutionsApi:
             },
         )
         assert (
-            res.json()["detail"][0]["msg"]
+            res.json()["error_detail"][0]["msg"]
             == "Value error, Invalid tax_id 123456789. FinancialInstitution tax_id must conform to XX-XXXXXXX pattern."
         )
         assert res.status_code == 422
@@ -120,7 +120,7 @@ class TestInstitutionsApi:
             },
         )
         assert (
-            res.json()["detail"][0]["msg"]
+            res.json()["error_detail"][0]["msg"]
             == "Value error, Invalid lei test_Lei. FinancialInstitution lei must be 20 characaters long and contain "
             "only letters and numbers."
         )
@@ -258,7 +258,7 @@ class TestInstitutionsApi:
             },
         )
         assert res.status_code == 422
-        assert "requires additional details." in res.json()["detail"][0]["msg"]
+        assert "requires additional details." in res.json()["error_detail"][0]["msg"]
 
     def test_create_institution_authed_no_permission(self, app_fixture: FastAPI, auth_mock: Mock):
         claims = {
@@ -396,7 +396,7 @@ class TestInstitutionsApi:
         lei_path = "testLeiPath"
         res = client.post(f"/v1/institutions/{lei_path}/domains/", json=[{"domain": "testDomain"}])
         assert res.status_code == 403
-        assert "domain denied" in res.json()["detail"]
+        assert "domain denied" in res.json()["error_detail"]
 
     def test_check_domain_allowed(self, mocker: MockerFixture, app_fixture: FastAPI, authed_user_mock: Mock):
         domain_allowed_mock = mocker.patch(
