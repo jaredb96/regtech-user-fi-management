@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Coverage report</title>
     <link rel="icon" sizes="32x32" href="favicon_32.png">
     <link rel="stylesheet" href="style.css" type="text/css">
-    <script type="text/javascript" src="coverage_html.js" defer></script>
+    <script src="coverage_html.js" defer></script>
 </head>
 <body class="indexfile">
 <header>
@@ -16,13 +16,13 @@
         <aside id="help_panel_wrapper">
             <input id="help_panel_state" type="checkbox">
             <label for="help_panel_state">
-                <img id="keyboard_icon" src="keybd_closed.png" alt="Show/hide keyboard shortcuts" />
+                <img id="keyboard_icon" src="keybd_closed.png" alt="Show/hide keyboard shortcuts">
             </label>
             <div id="help_panel">
                 <p class="legend">Shortcuts on this page</p>
                 <div class="keyhelp">
                     <p>
-                        <kbd>n</kbd>
+                        <kbd>f</kbd>
                         <kbd>s</kbd>
                         <kbd>m</kbd>
                         <kbd>x</kbd>
@@ -43,11 +43,20 @@
             </div>
         </aside>
         <form id="filter_container">
-            <input id="filter" type="text" value="" placeholder="filter..." />
+            <input id="filter" type="text" value="" placeholder="filter...">
+            <div>
+                <input id="hide100" type="checkbox" >
+                <label for="hide100">hide covered</label>
+            </div>
         </form>
+        <h2>
+                <a class="button current">Files</a>
+                <a class="button" href="function_index.html">Functions</a>
+                <a class="button" href="class_index.html">Classes</a>
+        </h2>
         <p class="text">
-            <a class="nav" href="https://coverage.readthedocs.io/en/7.4.4">coverage.py v7.4.4</a>,
-            created at 2024-04-17 22:39 +0000
+            <a class="nav" href="https://coverage.readthedocs.io/en/7.5.0">coverage.py v7.5.0</a>,
+            created at 2024-04-23 19:50 +0000
         </p>
     </div>
 </header>
@@ -55,18 +64,18 @@
     <table class="index" data-sortable>
         <thead>
             <tr class="tablehead" title="Click to sort">
-                <th class="name left" aria-sort="none" data-shortcut="n">Module</th>
-                <th aria-sort="none" data-default-sort-order="descending" data-shortcut="s">statements</th>
-                <th aria-sort="none" data-default-sort-order="descending" data-shortcut="m">missing</th>
-                <th aria-sort="none" data-default-sort-order="descending" data-shortcut="x">excluded</th>
-                <th aria-sort="none" data-default-sort-order="descending" data-shortcut="b">branches</th>
-                <th aria-sort="none" data-default-sort-order="descending" data-shortcut="p">partial</th>
-                <th class="right" aria-sort="none" data-shortcut="c">coverage</th>
+                <th class="name left" aria-sort="none" data-shortcut="f">File<span class="arrows"></span></th>
+                <th aria-sort="none" data-default-sort-order="descending" data-shortcut="s">statements<span class="arrows"></span></th>
+                <th aria-sort="none" data-default-sort-order="descending" data-shortcut="m">missing<span class="arrows"></span></th>
+                <th aria-sort="none" data-default-sort-order="descending" data-shortcut="x">excluded<span class="arrows"></span></th>
+                <th aria-sort="none" data-default-sort-order="descending" data-shortcut="b">branches<span class="arrows"></span></th>
+                <th aria-sort="none" data-default-sort-order="descending" data-shortcut="p">partial<span class="arrows"></span></th>
+                <th class="right" aria-sort="none" data-shortcut="c">coverage<span class="arrows"></span></th>
             </tr>
         </thead>
         <tbody>
-            <tr class="file">
-                <td class="name left"><a href="d_a576a7a362b4f7b1_config_py.html">src/regtech_user_fi_management/config.py</a></td>
+            <tr class="region">
+                <td class="name left"><a href="z_a576a7a362b4f7b1_config_py.html">src/regtech_user_fi_management/config.py</a></td>
                 <td>33</td>
                 <td>0</td>
                 <td>0</td>
@@ -74,17 +83,17 @@
                 <td>1</td>
                 <td class="right" data-ratio="40 41">98%</td>
             </tr>
-            <tr class="file">
-                <td class="name left"><a href="d_a576a7a362b4f7b1_dependencies_py.html">src/regtech_user_fi_management/dependencies.py</a></td>
-                <td>62</td>
+            <tr class="region">
+                <td class="name left"><a href="z_a576a7a362b4f7b1_dependencies_py.html">src/regtech_user_fi_management/dependencies.py</a></td>
+                <td>63</td>
                 <td>2</td>
                 <td>0</td>
                 <td>26</td>
                 <td>3</td>
-                <td class="right" data-ratio="83 88">94%</td>
+                <td class="right" data-ratio="84 89">94%</td>
             </tr>
-            <tr class="file">
-                <td class="name left"><a href="d_26d79a5c28069cb1_engine_py.html">src/regtech_user_fi_management/entities/engine/engine.py</a></td>
+            <tr class="region">
+                <td class="name left"><a href="z_26d79a5c28069cb1_engine_py.html">src/regtech_user_fi_management/entities/engine/engine.py</a></td>
                 <td>10</td>
                 <td>0</td>
                 <td>0</td>
@@ -92,8 +101,8 @@
                 <td>0</td>
                 <td class="right" data-ratio="10 10">100%</td>
             </tr>
-            <tr class="file">
-                <td class="name left"><a href="d_4932111ee33b60b6_listeners_py.html">src/regtech_user_fi_management/entities/listeners.py</a></td>
+            <tr class="region">
+                <td class="name left"><a href="z_4932111ee33b60b6_listeners_py.html">src/regtech_user_fi_management/entities/listeners.py</a></td>
                 <td>55</td>
                 <td>5</td>
                 <td>0</td>
@@ -101,8 +110,8 @@
                 <td>4</td>
                 <td class="right" data-ratio="70 83">84%</td>
             </tr>
-            <tr class="file">
-                <td class="name left"><a href="d_bcebeddd9b590a63_dao_py.html">src/regtech_user_fi_management/entities/models/dao.py</a></td>
+            <tr class="region">
+                <td class="name left"><a href="z_bcebeddd9b590a63_dao_py.html">src/regtech_user_fi_management/entities/models/dao.py</a></td>
                 <td>80</td>
                 <td>0</td>
                 <td>0</td>
@@ -110,8 +119,8 @@
                 <td>0</td>
                 <td class="right" data-ratio="82 82">100%</td>
             </tr>
-            <tr class="file">
-                <td class="name left"><a href="d_bcebeddd9b590a63_dto_py.html">src/regtech_user_fi_management/entities/models/dto.py</a></td>
+            <tr class="region">
+                <td class="name left"><a href="z_bcebeddd9b590a63_dto_py.html">src/regtech_user_fi_management/entities/models/dto.py</a></td>
                 <td>108</td>
                 <td>0</td>
                 <td>0</td>
@@ -119,8 +128,8 @@
                 <td>1</td>
                 <td class="right" data-ratio="123 124">99%</td>
             </tr>
-            <tr class="file">
-                <td class="name left"><a href="d_8eaaa37a3d202aee_institutions_repo_py.html">src/regtech_user_fi_management/entities/repos/institutions_repo.py</a></td>
+            <tr class="region">
+                <td class="name left"><a href="z_8eaaa37a3d202aee_institutions_repo_py.html">src/regtech_user_fi_management/entities/repos/institutions_repo.py</a></td>
                 <td>69</td>
                 <td>1</td>
                 <td>0</td>
@@ -128,8 +137,8 @@
                 <td>2</td>
                 <td class="right" data-ratio="92 95">97%</td>
             </tr>
-            <tr class="file">
-                <td class="name left"><a href="d_8eaaa37a3d202aee_repo_utils_py.html">src/regtech_user_fi_management/entities/repos/repo_utils.py</a></td>
+            <tr class="region">
+                <td class="name left"><a href="z_8eaaa37a3d202aee_repo_utils_py.html">src/regtech_user_fi_management/entities/repos/repo_utils.py</a></td>
                 <td>13</td>
                 <td>0</td>
                 <td>0</td>
@@ -137,17 +146,17 @@
                 <td>0</td>
                 <td class="right" data-ratio="15 15">100%</td>
             </tr>
-            <tr class="file">
-                <td class="name left"><a href="d_a576a7a362b4f7b1_main_py.html">src/regtech_user_fi_management/main.py</a></td>
-                <td>45</td>
-                <td>13</td>
+            <tr class="region">
+                <td class="name left"><a href="z_a576a7a362b4f7b1_main_py.html">src/regtech_user_fi_management/main.py</a></td>
+                <td>43</td>
+                <td>11</td>
                 <td>0</td>
-                <td>6</td>
+                <td>2</td>
                 <td>0</td>
-                <td class="right" data-ratio="38 51">75%</td>
+                <td class="right" data-ratio="34 45">76%</td>
             </tr>
-            <tr class="file">
-                <td class="name left"><a href="d_248a9614ea305b19___init___py.html">src/regtech_user_fi_management/routers/__init__.py</a></td>
+            <tr class="region">
+                <td class="name left"><a href="z_248a9614ea305b19___init___py.html">src/regtech_user_fi_management/routers/__init__.py</a></td>
                 <td>3</td>
                 <td>0</td>
                 <td>0</td>
@@ -155,8 +164,8 @@
                 <td>0</td>
                 <td class="right" data-ratio="3 3">100%</td>
             </tr>
-            <tr class="file">
-                <td class="name left"><a href="d_248a9614ea305b19_admin_py.html">src/regtech_user_fi_management/routers/admin.py</a></td>
+            <tr class="region">
+                <td class="name left"><a href="z_248a9614ea305b19_admin_py.html">src/regtech_user_fi_management/routers/admin.py</a></td>
                 <td>26</td>
                 <td>0</td>
                 <td>0</td>
@@ -164,25 +173,25 @@
                 <td>0</td>
                 <td class="right" data-ratio="46 46">100%</td>
             </tr>
-            <tr class="file">
-                <td class="name left"><a href="d_248a9614ea305b19_institutions_py.html">src/regtech_user_fi_management/routers/institutions.py</a></td>
-                <td>89</td>
+            <tr class="region">
+                <td class="name left"><a href="z_248a9614ea305b19_institutions_py.html">src/regtech_user_fi_management/routers/institutions.py</a></td>
+                <td>90</td>
                 <td>0</td>
                 <td>0</td>
                 <td>88</td>
                 <td>3</td>
-                <td class="right" data-ratio="174 177">98%</td>
+                <td class="right" data-ratio="175 178">98%</td>
             </tr>
         </tbody>
         <tfoot>
             <tr class="total">
                 <td class="name left">Total</td>
                 <td>593</td>
-                <td>21</td>
+                <td>19</td>
                 <td>0</td>
-                <td>222</td>
+                <td>218</td>
                 <td>14</td>
-                <td class="right" data-ratio="776 815">95%</td>
+                <td class="right" data-ratio="774 811">95%</td>
             </tr>
         </tfoot>
     </table>
@@ -194,16 +203,16 @@
 <footer>
     <div class="content">
         <p>
-            <a class="nav" href="https://coverage.readthedocs.io/en/7.4.4">coverage.py v7.4.4</a>,
-            created at 2024-04-17 22:39 +0000
+            <a class="nav" href="https://coverage.readthedocs.io/en/7.5.0">coverage.py v7.5.0</a>,
+            created at 2024-04-23 19:50 +0000
         </p>
     </div>
     <aside class="hidden">
-        <a id="prevFileLink" class="nav" href="d_248a9614ea305b19_institutions_py.html"/>
-        <a id="nextFileLink" class="nav" href="d_a576a7a362b4f7b1_config_py.html"/>
-        <button type="button" class="button_prev_file" data-shortcut="["/>
-        <button type="button" class="button_next_file" data-shortcut="]"/>
-        <button type="button" class="button_show_hide_help" data-shortcut="?"/>
+        <a id="prevFileLink" class="nav" href="z_248a9614ea305b19_institutions_py.html"></a>
+        <a id="nextFileLink" class="nav" href="z_a576a7a362b4f7b1_config_py.html"></a>
+        <button type="button" class="button_prev_file" data-shortcut="["></button>
+        <button type="button" class="button_next_file" data-shortcut="]"></button>
+        <button type="button" class="button_show_hide_help" data-shortcut="?"></button>
     </aside>
 </footer>
 </body>
