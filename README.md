@@ -14,9 +14,9 @@
 | src/regtech\_user\_fi\_management/entities/repos/repo\_utils.py        |       13 |        0 |        2 |        0 |    100% |           |
 | src/regtech\_user\_fi\_management/main.py                              |       43 |       11 |        2 |        0 |     76% |32-36, 41-46 |
 | src/regtech\_user\_fi\_management/routers/\_\_init\_\_.py              |        3 |        0 |        0 |        0 |    100% |           |
-| src/regtech\_user\_fi\_management/routers/admin.py                     |       26 |        0 |       20 |        0 |    100% |           |
+| src/regtech\_user\_fi\_management/routers/admin.py                     |       27 |        0 |       20 |        0 |    100% |           |
 | src/regtech\_user\_fi\_management/routers/institutions.py              |       90 |        0 |       88 |        3 |     98% |91->exit, 130->exit, 150->exit |
-|                                                              **TOTAL** |  **593** |   **19** |  **218** |   **14** | **95%** |           |
+|                                                              **TOTAL** |  **594** |   **19** |  **218** |   **14** | **95%** |           |
 
 6 empty files skipped.
 
