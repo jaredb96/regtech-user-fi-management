@@ -5,7 +5,7 @@
 | Name                                                                   |    Stmts |     Miss |   Branch |   BrPart |   Cover |   Missing |
 |----------------------------------------------------------------------- | -------: | -------: | -------: | -------: | ------: | --------: |
 | src/regtech\_user\_fi\_management/config.py                            |       33 |        0 |        8 |        1 |     98% |    16->20 |
-| src/regtech\_user\_fi\_management/dependencies.py                      |       63 |        2 |       26 |        3 |     94% |44, 52, 102->108 |
+| src/regtech\_user\_fi\_management/dependencies.py                      |       15 |        0 |        4 |        0 |    100% |           |
 | src/regtech\_user\_fi\_management/entities/engine/engine.py            |       10 |        0 |        0 |        0 |    100% |           |
 | src/regtech\_user\_fi\_management/entities/listeners.py                |       55 |        5 |       28 |        4 |     84% |18->13, 26->13, 40->33, 51->exit, 71-82 |
 | src/regtech\_user\_fi\_management/entities/models/dao.py               |       80 |        0 |        2 |        0 |    100% |           |
@@ -15,8 +15,8 @@
 | src/regtech\_user\_fi\_management/main.py                              |       43 |       11 |        2 |        0 |     76% |32-36, 41-46 |
 | src/regtech\_user\_fi\_management/routers/\_\_init\_\_.py              |        3 |        0 |        0 |        0 |    100% |           |
 | src/regtech\_user\_fi\_management/routers/admin.py                     |       27 |        0 |       20 |        0 |    100% |           |
-| src/regtech\_user\_fi\_management/routers/institutions.py              |       90 |        0 |       88 |        3 |     98% |91->exit, 130->exit, 150->exit |
-|                                                              **TOTAL** |  **594** |   **19** |  **218** |   **14** | **95%** |           |
+| src/regtech\_user\_fi\_management/routers/institutions.py              |       87 |        0 |       80 |        3 |     98% |94->exit, 137->exit, 160->exit |
+|                                                              **TOTAL** |  **543** |   **17** |  **188** |   **11** | **96%** |           |
 
 6 empty files skipped.
 
